@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ContactCard } from "../molecules/ContactCard";
-import { Profile } from "../../domain/entities";
+import { ContactCard } from "@/components/molecules/ContactCard";
+import { Profile } from "@/domain/entities";
 import toast from "react-hot-toast";
-import { Icon } from "../atoms/Icon";
+import { Icon } from "@/components/atoms/Icon";
 
 
 interface ContactProps {
@@ -14,7 +14,7 @@ interface ContactProps {
 
 export const Contact = ({ contact }: ContactProps) => {
     return (
-        <section id="contact" className="py-24 px-6 bg-slate-50/50">
+        <section id="contact" className="relative py-24 px-6 overflow-hidden">
             <div className="max-w-4xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -23,12 +23,12 @@ export const Contact = ({ contact }: ContactProps) => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">Let's Connect</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">Let&apos;s Connect</h2>
                     <div className="flex justify-center mb-8">
                         <div className="h-1.5 w-24 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500" />
                     </div>
                     <p className="text-slate-500 text-lg max-w-2xl mx-auto leading-relaxed">
-                        Ready to discuss platform engineering solutions? I'd love to hear about your infrastructure challenges and explore how we can build something scalable together.
+                        Ready to discuss platform engineering solutions? I&apos;d love to hear about your infrastructure challenges and explore how we can build something scalable together.
                     </p>
                 </motion.div>
 

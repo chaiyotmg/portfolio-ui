@@ -2,9 +2,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Experience as ExperienceType } from "../../domain/entities";
-import { SectionHeader } from "../molecules/SectionHeader";
-import { ExperienceItem } from "../molecules/ExperienceItem";
+import { Experience as ExperienceType } from "@/domain/entities";
+import { SectionHeader } from "@/components/molecules/SectionHeader";
+import { ExperienceItem } from "@/components/molecules/ExperienceItem";
 
 interface ExperienceProps {
     experiences: ExperienceType[];
@@ -12,7 +12,7 @@ interface ExperienceProps {
 
 export const Experience = ({ experiences }: ExperienceProps) => {
     return (
-        <section id="experience" className="py-24 px-6 bg-white">
+        <section id="experience" className="py-24 px-6 bg-transparent">
             <div className="max-w-4xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}

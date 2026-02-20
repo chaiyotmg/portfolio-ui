@@ -1,6 +1,6 @@
 import React from "react";
-import { Typography } from "../atoms/Typography";
-import { Icon } from "../atoms/Icon";
+import { Typography } from "@/components/atoms/Typography";
+import { Icon } from "@/components/atoms/Icon";
 
 interface ExperienceItemProps {
     company: string;

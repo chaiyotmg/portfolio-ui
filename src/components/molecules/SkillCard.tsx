@@ -1,7 +1,6 @@
 import React from "react";
-import { Typography } from "../atoms/Typography";
-import { Chip } from "../atoms/Chip";
-import { Icon } from "../atoms/Icon";
+import { Typography } from "@/components/atoms/Typography";
+import { Chip } from "@/components/atoms/Chip";
 
 interface SkillCardProps {
     category: string;

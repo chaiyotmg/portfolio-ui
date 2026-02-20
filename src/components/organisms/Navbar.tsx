@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Button } from "../atoms/Button";
-import { Icon } from "../atoms/Icon";
+import { Icon } from "@/components/atoms/Icon";
 import * as Icons from "lucide-react";
 
 const navLinks: { label: string, href: string, icon: keyof typeof Icons | React.ReactNode }[] = [
-    { label: "About", href: "home", icon: "User" as const },
+    { label: "About", href: "about", icon: "User" as const },
     { label: "Skills", href: "skills", icon: "Code2" as const },
     { label: "Experience", href: "experience", icon: "Briefcase" as const },
     { label: "Projects", href: "projects", icon: "FolderOpen" as const },
@@ -16,7 +15,7 @@ const navLinks: { label: string, href: string, icon: keyof typeof Icons | React.
 export const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState("home");
+    const [activeSection, setActiveSection] = useState("about");
 
     useEffect(() => {
         const handleScroll = () => {
@@ -84,7 +83,7 @@ export const Navbar = () => {
                 <div className="flex items-center justify-between">
                     {/* Brand */}
                     <button
-                        onClick={() => scrollToSection("home")}
+                        onClick={() => scrollToSection("about")}
                         className="flex items-center gap-2 group cursor-pointer bg-transparent border-none p-0"
                     >
                         <div className="w-10 h-10 flex items-center justify-center group-hover:scale-110 transition-transform">

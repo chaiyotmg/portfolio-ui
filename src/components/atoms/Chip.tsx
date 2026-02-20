@@ -23,7 +23,7 @@ export const Chip = ({ children, variant = "default", icon, iconColor }: ChipPro
         if (!icon) return null;
 
         if (typeof icon === "string") {
-            return <Icon icon={icon as any} size={12} className={iconColor || "opacity-80"} />;
+            return <Icon icon={icon as keyof typeof Icons} size={12} className={iconColor || "opacity-80"} />;
         }
 
         return <span className={iconColor || "opacity-80"}>{icon}</span>;

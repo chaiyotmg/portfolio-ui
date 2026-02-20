@@ -2,9 +2,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Skill } from "../../domain/entities";
-import { SectionHeader } from "../molecules/SectionHeader";
-import { SkillCard } from "../molecules/SkillCard";
+import { Skill } from "@/domain/entities";
+import { SectionHeader } from "@/components/molecules/SectionHeader";
+import { SkillCard } from "@/components/molecules/SkillCard";
 
 interface SkillsProps {
     skills: Skill[];
@@ -12,7 +12,7 @@ interface SkillsProps {
 
 export const Skills = ({ skills }: SkillsProps) => {
     return (
-        <section id="skills" className="py-24 px-6 bg-slate-50">
+        <section id="skills" className="py-24 px-6 bg-transparent">
             <div className="max-w-6xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

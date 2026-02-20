@@ -1,4 +1,4 @@
-import { Profile, Skill, Experience, Project } from "../domain/entities";
+import { Profile, Skill, Experience, Project } from "@/domain/entities";
 
 // ... existing profile, skills, and experiences exports
 
@@ -6,7 +6,7 @@ export const projects: Project[] = [
     {
         title: "API Gateway Microservices",
         description: "A robust API Gateway built with Spring Cloud Gateway and Eureka for service discovery, featuring rate limiting and JWT authentication.",
-        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=800&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=800&auto=format&fit=crop",
         link: "https://github.com/chaiyotmg",
         tags: ["Spring Boot", "Microservices", "Docker"],
     },
@@ -20,7 +20,7 @@ export const projects: Project[] = [
     {
         title: "Automated CI/CD Engine",
         description: "A custom automation engine that streamlines the build and deployment process for multi-language microservices into OpenShift environments.",
-        image: "https://images.unsplash.com/photo-1618401471353-b98aadebc255?q=80&w=800&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=800&auto=format&fit=crop",
         link: "https://github.com/chaiyotmg",
         tags: ["Jenkins", "Shell Script", "OpenShift"],
     },
@@ -38,7 +38,7 @@ export const profile: Profile = {
         linkedin: "https://www.linkedin.com/in/chaiyot-mali-ngam",
         github: "https://github.com/chaiyotmg",
         whatsapp: "094-2647104",
-        resume: "/resume.pdf",
+        resume: process.env.NEXT_PUBLIC_RESUME_URL || "",
         location: "Bangkok, Thailand",
     },
     education: [

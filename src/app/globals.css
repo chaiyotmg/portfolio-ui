@@ -1,9 +1,29 @@
 @import "tailwindcss";
-@config "../../tailwind.config.js";
+/* @config "../../tailwind.config.js"; */
+
+@layer utilities {
+  .clip-triangle {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+
+  .bg-dot-grid {
+    background-image: radial-gradient(var(--grid-dot-color) 1.5px, transparent 1.5px);
+    background-size: 32px 32px;
+  }
+
+  .bg-line-grid {
+    background-image:
+      linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --grid-dot-color: #94a3b8;
+  --grid-line-color: #e2e8f0;
 }
 
 @theme inline {
