@@ -49,7 +49,7 @@ build-app:
       fi
     - |
       echo "Build app to docker image"
-      docker build --no-cache -t $DOCKER_IMAGE:$BUILD_TAG .
+      docker build -t $DOCKER_IMAGE:$BUILD_TAG .
       docker image ls
     - |
       echo "Push docker image to GitLab registry"
