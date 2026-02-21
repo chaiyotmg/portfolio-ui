@@ -2,6 +2,7 @@ stages:
   - build
 
 variables:
+  GIT_DEPTH: 0
   TAG:
     value: "0.0.1-SNAPSHOT"
     description: "Docker image tag"
@@ -26,11 +27,17 @@ build-app:
   variables:
     DOCKER_IMAGE: $GITLAB_REGISTRY/portfolio-ui
   before_script:
+    - |
+      echo "Checking CI variables..."
+      if [ -z "$GITLAB_TOKEN" ]; then echo "❌ Error: GITLAB_TOKEN is not set"; exit 1; fi
+      if [ -z "$GITLAB_USERNAME" ]; then echo "❌ Error: GITLAB_USERNAME is not set"; exit 1; fi
+      if [ -z "$GITLAB_REGISTRY" ]; then echo "❌ Error: GITLAB_REGISTRY is not set"; exit 1; fi
     - echo "$GITLAB_TOKEN" | docker login $GITLAB_REGISTRY -u $GITLAB_USERNAME --password-stdin
   script:
     - |
       if [ "$CI_PIPELINE_SOURCE" == "web" ]; then
         echo "Building from manual trigger: Branch=$BRANCH, Tag=$TAG"
+        git fetch origin $BRANCH
         git checkout $BRANCH
         BUILD_TAG=$TAG
       else
