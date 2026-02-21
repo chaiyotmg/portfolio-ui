@@ -1,0 +1,22 @@
+# 1. Dependencies and Environment
+node_modules
+npm-debug.log
+
+# 2. Source Control and IDE
+.git
+.gitignore
+.DS_Store
+.vscode
+.idea
+.dockerignore
+
+# 3. Build Artifacts and Output
+dist
+build
+temp
+coverage
+
+# 4. Sensitive Files (สำคัญมาก!)
+.env
+*.env
+secrets.json

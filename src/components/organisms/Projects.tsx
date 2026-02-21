@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 import { Project } from "@/domain/entities";
 import { SectionHeader } from "@/components/molecules/SectionHeader";

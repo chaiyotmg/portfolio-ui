@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { PortfolioTemplate } from "@/components/templates/PortfolioTemplate";
 import { Navbar } from "@/components/organisms/Navbar";
 import { About } from "@/components/organisms/About";
