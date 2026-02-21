@@ -14,95 +14,142 @@ interface ContactProps {
 
 export const Contact = ({ contact }: ContactProps) => {
     return (
-        <section id="contact" className="relative py-24 px-6 overflow-hidden">
+        <section id="contact" className="py-24 px-6 bg-transparent overflow-hidden">
             <div className="max-w-4xl mx-auto">
+                {/* Contact Terminal Window */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="bg-white/40 backdrop-blur-md border border-slate-200/60 rounded-[2rem] shadow-2xl shadow-slate-200/50 overflow-hidden"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">Let&apos;s Connect</h2>
-                    <div className="flex justify-center mb-8">
-                        <div className="h-1.5 w-24 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500" />
+                    {/* Terminal Top Bar */}
+                    <div className="bg-white/80 border-b border-slate-200/60 px-8 py-5 flex items-center justify-between">
+                        <div className="flex gap-2">
+                            <div className="w-3.5 h-3.5 rounded-full bg-red-400/80 shadow-sm" />
+                            <div className="w-3.5 h-3.5 rounded-full bg-yellow-400/80 shadow-sm" />
+                            <div className="w-3.5 h-3.5 rounded-full bg-green-400/80 shadow-sm" />
+                        </div>
+                        <div className="flex items-center gap-2 text-slate-400 font-mono text-xs font-bold">
+                            <Icon icon="Folder" size={14} className="text-emerald-500/60" />
+                            ~/portfolio/contact
+                        </div>
                     </div>
-                    <p className="text-slate-500 text-lg max-w-2xl mx-auto leading-relaxed">
-                        Ready to discuss platform engineering solutions? I&apos;d love to hear about your infrastructure challenges and explore how we can build something scalable together.
-                    </p>
+
+                    {/* Terminal Content */}
+                    <div className="p-8 md:p-12">
+                        {/* Section Header (Technical Style) */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            viewport={{ once: true }}
+                            className="mb-12"
+                        >
+                            <div className="flex items-center gap-2 mb-4">
+                                <span className="text-emerald-500 font-mono font-bold">$</span>
+                                <h2 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
+                                    Let&apos;s <span className="text-emerald-500 text-3xl md:text-4xl">Connect</span>
+                                </h2>
+                            </div>
+                            <p className="text-slate-500 text-sm md:text-base font-mono leading-relaxed max-w-2xl border-l-2 border-emerald-500/20 pl-4 py-1">
+                                I&apos;m always open to new connections and meaningful conversations. Whether you have a project in mind or just want to chat, feel free to reach out.
+                            </p>
+                        </motion.div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.3 }}
+                                viewport={{ once: true }}
+                            >
+                                <ContactCard
+                                    icon="Mail"
+                                    label="Email"
+                                    value={contact.email}
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(contact.email);
+                                        toast.success((t) => (
+                                            <div className="flex items-center gap-2">
+                                                <span>Email copied to clipboard!</span>
+                                                <button
+                                                    onClick={() => toast.dismiss(t.id)}
+                                                    className="p-1 hover:bg-emerald-50 rounded-full transition-colors cursor-pointer"
+                                                >
+                                                    <Icon icon="X" size={14} />
+                                                </button>
+                                            </div>
+                                        ));
+                                    }}
+                                />
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.4 }}
+                                viewport={{ once: true }}
+                            >
+                                <ContactCard
+                                    icon="MapPin"
+                                    label="Location"
+                                    value={contact.location || "Bangkok, Thailand"}
+                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.location || "Bangkok, Thailand")}`}
+                                />
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.5 }}
+                                viewport={{ once: true }}
+                            >
+                                <ContactCard
+                                    icon="Linkedin"
+                                    label="LinkedIn"
+                                    value="Connect with me"
+                                    href={contact.linkedin}
+                                />
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.6 }}
+                                viewport={{ once: true }}
+                            >
+                                <ContactCard
+                                    icon="Github"
+                                    label="GitHub"
+                                    value="chaiyotmg"
+                                    href={contact.github}
+                                />
+                            </motion.div>
+                        </div>
+                    </div>
+
+                    {/* Terminal Footer */}
+                    <div className="bg-white/80 border-t border-slate-200/60 px-8 py-5 flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-2 text-slate-400 font-mono text-xs">
+                                <span className="text-emerald-500 font-bold">$</span>
+                                <span className="bg-slate-100 px-2 py-0.5 rounded text-[10px] font-bold text-slate-500 uppercase tracking-widest">Connect</span>
+                                <span className="text-slate-600">ssh mail@chaiyot.mg@gmail.com</span>
+                            </div>
+                            <motion.div
+                                animate={{ opacity: [1, 0] }}
+                                transition={{ duration: 0.8, repeat: Infinity }}
+                                className="w-1.5 h-4 bg-emerald-500 rounded-full"
+                            />
+                        </div>
+                        <div className="hidden md:flex items-center gap-4 text-slate-300 font-mono text-[10px]">
+                            <span>STATUS: LIVE</span>
+                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        </div>
+                    </div>
                 </motion.div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
-                        viewport={{ once: true }}
-                    >
-                        <ContactCard
-                            icon="Mail"
-                            label="Email"
-                            value={contact.email}
-                            onClick={() => {
-                                navigator.clipboard.writeText(contact.email);
-                                toast.success((t) => (
-                                    <div className="flex items-center gap-2">
-                                        <span>Email copied to clipboard!</span>
-                                        <button
-                                            onClick={() => toast.dismiss(t.id)}
-                                            className="p-1 hover:bg-emerald-50 rounded-full transition-colors cursor-pointer"
-                                        >
-                                            <Icon icon="X" size={14} />
-                                        </button>
-                                    </div>
-                                ));
-                            }}
-                        />
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        viewport={{ once: true }}
-                    >
-                        <ContactCard
-                            icon="MapPin"
-                            label="Location"
-                            value={contact.location || "Bangkok, Thailand"}
-                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.location || "Bangkok, Thailand")}`}
-                        />
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        viewport={{ once: true }}
-                    >
-                        <ContactCard
-                            icon="Linkedin"
-                            label="LinkedIn"
-                            value="Connect with me"
-                            href={contact.linkedin}
-                        />
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
-                        viewport={{ once: true }}
-                    >
-                        <ContactCard
-                            icon="Github"
-                            label="GitHub"
-                            value="chaiyotmg"
-                            href={contact.github}
-                        />
-                    </motion.div>
-
-                </div>
             </div>
         </section>
     );

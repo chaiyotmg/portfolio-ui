@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, HTMLMotionProps } from "framer-motion";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -6,7 +7,7 @@ function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends HTMLMotionProps<"button"> {
     variant?: "primary" | "secondary" | "outline" | "ghost" | "gradient";
     size?: "sm" | "md" | "lg";
 }
@@ -18,11 +19,11 @@ export const Button = ({
     ...props
 }: ButtonProps) => {
     const variants = {
-        primary: "bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-500/20",
+        primary: "bg-emerald-500 text-white hover:bg-emerald-600 shadow-lg shadow-emerald-500/20",
         secondary: "bg-slate-800 text-white hover:bg-slate-900",
         outline: "border-2 border-slate-200 bg-transparent hover:bg-slate-50 text-slate-900",
         ghost: "bg-transparent hover:bg-slate-100 text-slate-600",
-        gradient: "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 shadow-xl shadow-blue-500/20 border-none",
+        gradient: "bg-gradient-to-r from-emerald-400 to-teal-500 text-white hover:from-emerald-500 hover:to-teal-600 shadow-xl shadow-emerald-500/20 border-none",
     };
 
     const sizes = {
@@ -32,9 +33,11 @@ export const Button = ({
     };
 
     return (
-        <button
+        <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             className={cn(
-                "inline-flex items-center justify-center rounded-full font-bold transition-all active:scale-95 disabled:opacity-50 disabled:pointer-events-none",
+                "inline-flex items-center justify-center rounded-full font-bold transition-all disabled:opacity-50 disabled:pointer-events-none",
                 variants[variant],
                 sizes[size],
                 className

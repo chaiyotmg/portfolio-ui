@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Typography } from "@/components/atoms/Typography";
 import { Chip } from "@/components/atoms/Chip";
 import { Icon } from "@/components/atoms/Icon";
@@ -9,58 +10,89 @@ interface ProjectCardProps {
     description: string;
     image: string;
     link: string;
-    tags?: string[];
-    externalIcon?: React.ReactNode;
-    arrowIcon?: React.ReactNode;
+    tags?: {
+        name: string;
+        icon?: string | React.ReactNode;
+        iconWidth?: number;
+        iconHeight?: number;
+    }[];
 }
 
-export const ProjectCard = ({ title, description, image, link, tags, externalIcon, arrowIcon }: ProjectCardProps) => {
+export const ProjectCard = ({ title, description, image, link, tags }: ProjectCardProps) => {
     return (
-        <div className="group bg-white rounded-3xl border border-slate-100 overflow-hidden hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 flex flex-col h-full">
+        <div className="group bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 flex flex-col h-[480px] md:h-[560px] shadow-lg shadow-slate-200/40">
+            {/* Terminal Top Bar */}
+            <div className="bg-slate-50/80 border-b border-slate-100 px-6 py-4 flex items-center justify-between">
+                <div className="flex gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-400/80 shadow-sm" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-400/80 shadow-sm" />
+                    <div className="w-3 h-3 rounded-full bg-green-400/80 shadow-sm" />
+                </div>
+                <div className="flex items-center gap-1.5 text-slate-400 font-mono text-[10px] font-bold">
+                    <Icon icon="Folder" size={10} />
+                    ~/projects/{title.toLowerCase().replace(/\s+/g, '-')}
+                </div>
+            </div>
+
             {/* Image Section */}
-            <div className="relative h-56 overflow-hidden">
+            <div className="relative h-[160px] md:h-[200px] min-h-[160px] max-h-[160px] overflow-hidden">
                 <Image
                     src={image}
                     alt={title}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                    <a
-                        href={link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-white font-bold text-sm bg-blue-600 px-4 py-2 rounded-full hover:bg-blue-700 transition-colors"
-                    >
-                        View Project <Icon icon={externalIcon || "ExternalLink"} size={14} />
-                    </a>
-                </div>
+                <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors duration-500" />
             </div>
 
             {/* Content Section */}
-            <div className="p-8 flex flex-col flex-grow">
+            <div className="p-6 md:p-8 flex flex-col flex-grow">
                 <div className="flex flex-wrap gap-2 mb-4">
                     {tags?.map((tag) => (
-                        <Chip key={tag} variant="primary">{tag}</Chip>
+                        <Chip
+                            key={tag.name}
+                            variant="minimal"
+                            icon={tag.icon}
+                            iconWidth={tag.iconWidth}
+                            iconHeight={tag.iconHeight}
+                            className="font-mono text-[10px] md:text-xs"
+                        >
+                            {tag.name}
+                        </Chip>
                     ))}
                 </div>
 
-                <Typography variant="h3" className="mb-3 text-slate-800 group-hover:text-blue-600 transition-colors">
+                <Typography variant="h4" className="mb-3 text-slate-800 group-hover:text-emerald-500 transition-colors font-bold">
                     {title}
                 </Typography>
 
-                <Typography variant="p" className="text-sm text-slate-500 line-clamp-3 mb-6">
+                <Typography variant="p" className="text-sm text-slate-500 line-clamp-3 mb-4 leading-relaxed">
                     {description}
                 </Typography>
 
-                <div className="mt-auto pt-4 border-t border-slate-50">
-                    <a
+                <div className="mt-auto pt-4 border-t border-slate-50 flex justify-between items-center">
+                    <motion.a
                         href={link}
-                        className="text-blue-600 font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ x: 5 }}
+                        className="text-emerald-500 font-bold text-sm flex items-center gap-1.5 transition-all"
                     >
-                        Learn More <Icon icon={arrowIcon || "ArrowRight"} size={14} />
-                    </a>
+                        View System <Icon icon="Terminal" size={14} />
+                    </motion.a>
+
+                    <div className="flex gap-2">
+                        <motion.a
+                            href="#"
+                            whileHover={{ scale: 1.1, rotate: 5 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="p-2 bg-slate-50 rounded-lg text-slate-400 hover:bg-emerald-50 hover:text-emerald-500 transition-colors"
+                        >
+                            <Icon icon="Github" size={16} />
+                        </motion.a>
+                    </div>
                 </div>
             </div>
         </div>

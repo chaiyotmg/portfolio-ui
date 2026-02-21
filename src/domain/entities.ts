@@ -15,17 +15,19 @@ export interface Profile {
     resume?: string;
     location?: string;
   };
-  education: {
-    degree: string;
-    school: string;
-    period: string;
-    gpax: string;
-  }[];
 }
 
 export interface Skill {
   category: string;
-  items: { name: string; icon?: string | React.ReactNode; color?: string }[];
+  items: {
+    name: string;
+    icon?: string | React.ReactNode;
+    color?: string;
+    iconWidth?: number;
+    iconHeight?: number;
+  }[];
+  icon?: string | React.ReactNode;
+  bgIcon?: string | React.ReactNode;
 }
 
 export interface Experience {
@@ -41,6 +43,19 @@ export interface Project {
   description: string;
   image: string;
   link: string;
-  tags?: string[];
+  tags?: {
+    name: string;
+    icon?: string | React.ReactNode;
+    iconWidth?: number;
+    iconHeight?: number;
+  }[];
+  icon?: string | React.ReactNode;
+}
+
+export interface Education {
+  degree: string;
+  school: string;
+  period: string;
+  gpax: string;
   icon?: string | React.ReactNode;
 }

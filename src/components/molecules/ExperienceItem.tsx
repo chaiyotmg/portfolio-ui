@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Typography } from "@/components/atoms/Typography";
 import { Icon } from "@/components/atoms/Icon";
 
@@ -20,34 +21,53 @@ export const ExperienceItem = ({
     icon
 }: ExperienceItemProps) => {
     return (
-        <div className="relative pl-8 pb-12 last:pb-0">
+        <div className="relative pl-14 pb-16 last:pb-8 group/exp">
             {/* Timeline Line */}
-            <div className="absolute left-0 top-0 bottom-0 w-px bg-slate-200" />
+            <div className="absolute left-0 top-0 bottom-0 w-px bg-slate-100 group-last/exp:bottom-auto group-last/exp:h-1" />
 
-            {/* Timeline Dot / Icon */}
-            <div className={`absolute left-[-16px] top-1 w-8 h-8 rounded-full border-2 border-white ring-4 flex items-center justify-center transition-all ${isCurrent ? "bg-blue-600 ring-blue-100 shadow-lg shadow-blue-500/20" : "bg-slate-100 ring-slate-50"}`}>
+            {/* Timeline Node (Terminal Style) */}
+            <motion.div
+                whileHover={{ scale: 1.25 }}
+                className={`absolute left-[-18px] top-1 z-10 w-9 h-9 rounded-xl border border-slate-200 bg-white flex items-center justify-center transition-all shadow-sm group-hover/exp:border-emerald-200 group-hover/exp:shadow-md group-hover/exp:shadow-emerald-500/5 ${isCurrent ? "ring-4 ring-emerald-50" : ""}`}
+            >
                 {icon ? (
-                    <Icon icon={icon} size={16} className={isCurrent ? "text-white" : "text-slate-400"} />
+                    <Icon icon={icon} size={18} className={isCurrent ? "text-emerald-500" : "text-slate-400"} />
                 ) : (
-                    <div className={`w-2 h-2 rounded-full ${isCurrent ? "bg-white" : "bg-slate-400"}`} />
+                    <div className={`w-2.5 h-2.5 rounded-sm rotate-45 ${isCurrent ? "bg-emerald-500" : "bg-slate-300"}`} />
                 )}
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
-                <Typography variant="h4" className="text-slate-900">{position}</Typography>
-                <Typography variant="small" className="font-medium text-blue-600">{period}</Typography>
-            </div>
+            <motion.div
+                whileHover={{ x: 6 }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                className="cursor-default"
+            >
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-2">
+                    <div className="flex flex-col">
+                        <Typography variant="h4" className="text-slate-900 font-bold group-hover/exp:text-emerald-600 transition-colors tracking-tight">
+                            {position}
+                        </Typography>
+                        <Typography variant="span" className="text-sm font-mono text-slate-500 mt-0.5">
+                            {company}
+                        </Typography>
+                    </div>
+                    <div className="flex items-center gap-2 bg-slate-100/50 px-3 py-1 rounded-md border border-slate-200/50">
+                        <Icon icon="Calendar" size={12} className="text-slate-400" />
+                        <span className="text-xs font-mono font-bold text-emerald-600 whitespace-nowrap">
+                            {period}
+                        </span>
+                    </div>
+                </div>
 
-            <Typography variant="span" className="block text-slate-700 font-semibold mb-4">{company}</Typography>
-
-            <ul className="space-y-2">
-                {description.map((item, index) => (
-                    <li key={index} className="flex gap-2 text-slate-500 text-sm md:text-base leading-relaxed">
-                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0" />
-                        {item}
-                    </li>
-                ))}
-            </ul>
+                <ul className="space-y-3">
+                    {description.map((item, index) => (
+                        <li key={index} className="flex gap-3 text-slate-500 text-sm md:text-[15px] leading-relaxed">
+                            <span className="mt-2 w-1.5 h-1.5 bg-slate-200 rounded-sm shrink-0 group-hover/exp:bg-emerald-400 group-hover/exp:rotate-45 transition-all duration-300" />
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+            </motion.div>
         </div>
     );
 };
