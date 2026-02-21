@@ -8,9 +8,8 @@ WORKDIR /usr/src/app
 FROM base AS install
 RUN mkdir -p /temp/dev
 COPY package.json bun.lock /temp/dev/
-# use cache mount for bun install
-RUN --mount=type=cache,id=bun,target=/root/.bun/install/cache \
-    cd /temp/dev && (bun install --frozen-lockfile || bun install --frozen-lockfile --registry https://registry.yarnpkg.com)
+# install dependencies without cache
+RUN cd /temp/dev && (bun install --frozen-lockfile || bun install --frozen-lockfile --registry https://registry.yarnpkg.com)
 
 # copy node_modules from temp directory
 # then copy all (non-ignored) project files into the image
@@ -18,13 +17,18 @@ FROM base AS prerelease
 COPY --from=install /temp/dev/node_modules node_modules
 COPY . .
 
+# ARG for build-time environment variables
+ARG NEXT_PUBLIC_WEB_URL
+ARG NEXT_PUBLIC_RESUME_URL
+ENV NEXT_PUBLIC_WEB_URL=$NEXT_PUBLIC_WEB_URL
+ENV NEXT_PUBLIC_RESUME_URL=$NEXT_PUBLIC_RESUME_URL
+
 # [optional] tests & build
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# use cache mount for next.js build
-RUN --mount=type=cache,id=next_cache,target=/usr/src/app/.next/cache \
-    bun run build
+# next.js build without cache
+RUN bun run build
 
 # copy production dependencies and source code into final image
 FROM registry.gitlab.com/chaiyot-mg/registry/bun:1.3.4-distroless AS release
