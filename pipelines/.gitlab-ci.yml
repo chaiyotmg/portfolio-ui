@@ -54,7 +54,7 @@ build-app:
       fi
     - |
       echo "Build app to docker image"
-      docker build -t $DOCKER_IMAGE:$BUILD_TAG .
+      docker build --platform linux/arm64 -t $DOCKER_IMAGE:$BUILD_TAG .
       docker image ls
     - |
       echo "Push docker image to GitLab registry"
