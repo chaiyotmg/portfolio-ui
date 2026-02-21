@@ -1,0 +1,50 @@
+stages:
+  - build
+
+variables:
+  TAG:
+    value: "0.0.1-SNAPSHOT"
+    description: "Docker image tag"
+  BRANCH:
+    value: "develop"
+    description: "Branch to build from"
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "web"
+      when: always
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: always
+    - when: never
+
+default:
+  tags:
+    - self-hosted
+
+build-app:
+  stage: build
+  variables:
+    DOCKER_IMAGE: $GITLAB_REGISTRY/portfolio-ui
+  before_script:
+    - echo "$GITLAB_TOKEN" | docker login $GITLAB_REGISTRY -u $GITLAB_USERNAME --password-stdin
+  script:
+    - |
+      if [ "$CI_PIPELINE_SOURCE" == "web" ]; then
+        echo "Building from manual trigger: Branch=$BRANCH, Tag=$TAG"
+        git checkout $BRANCH
+        BUILD_TAG=$TAG
+      else
+        echo "Building from automatic trigger: Branch=$CI_COMMIT_BRANCH"
+        BUILD_TAG=$CI_COMMIT_SHORT_SHA
+      fi
+    - |
+      echo "Build app to docker image"
+      docker build --no-cache --platform linux/arm64 -t $DOCKER_IMAGE:$BUILD_TAG .
+      docker image ls
+    - |
+      echo "Push docker image to GitLab registry"
+      docker push $DOCKER_IMAGE:$BUILD_TAG
+    - |
+      echo "Clean docker images"
+      docker rmi $DOCKER_IMAGE:$BUILD_TAG
+      docker image prune -f
