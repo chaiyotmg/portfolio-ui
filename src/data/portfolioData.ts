@@ -13,29 +13,7 @@ export const projects: Project[] = [
             { name: "TailwindCSS", icon: "icons/tailwindcss.svg", iconWidth: 14, iconHeight: 14 },
             { name: "Bun.js", icon: "icons/bun.svg", iconWidth: 14, iconHeight: 14 },
         ],
-    },
-    {
-        title: "K8s Deployment Dashboard",
-        description: "A monitoring dashboard for Kubernetes clusters that visualizes pod health, resource usage, and deployment status in real-time.",
-        image: "/images/deploy-oke-atp-oci.png",
-        link: "https://github.com/chaiyotmg",
-        tags: [
-            { name: "Kubernetes", icon: "icons/kubernetes.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "React", icon: "icons/react.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "Node.js", icon: "icons/nestjs.svg", iconWidth: 14, iconHeight: 14 },
-        ],
-    },
-    {
-        title: "Automated CI/CD Engine",
-        description: "A custom automation engine that streamlines the build and deployment process for multi-language microservices into OpenShift environments.",
-        image: "/images/deploy-oke-atp-oci.png",
-        link: "https://github.com/chaiyotmg",
-        tags: [
-            { name: "Jenkins", icon: "icons/githubactions.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "Shell Script", icon: "icons/linux.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "OpenShift", icon: "icons/redhat.svg", iconWidth: 14, iconHeight: 14 },
-        ],
-    },
+    }
 ];
 
 export const profile: Profile = {
