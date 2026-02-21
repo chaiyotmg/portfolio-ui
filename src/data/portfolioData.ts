@@ -1,32 +1,45 @@
-import { Profile, Skill, Experience, Project } from "@/domain/entities";
+import { Profile, Skill, Experience, Project, Education } from "@/domain/entities";
 
 
 export const projects: Project[] = [
     {
-        title: "API Gateway Microservices",
-        description: "A robust API Gateway built with Spring Cloud Gateway and Eureka for service discovery, featuring rate limiting and JWT authentication.",
-        image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=800&auto=format&fit=crop",
-        link: "https://github.com/chaiyotmg",
-        tags: ["Spring Boot", "Microservices", "Docker"],
+        title: "Portfolio UI",
+        description: "A modern, responsive portfolio website featuring a unique terminal-inspired aesthetic, smooth animations with Framer Motion, and a clean light theme.",
+        image: "/images/portfolio-ui-bg.png", // Update this if you have a specific image path
+        link: "https://github.com/chaiyotmg/portfolio-ui",
+        tags: [
+            { name: "Next.js", icon: "icons/nextjs.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "TypeScript", icon: "icons/typescript.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "TailwindCSS", icon: "icons/tailwindcss.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "Bun.js", icon: "icons/bun.svg", iconWidth: 14, iconHeight: 14 },
+        ],
     },
     {
         title: "K8s Deployment Dashboard",
         description: "A monitoring dashboard for Kubernetes clusters that visualizes pod health, resource usage, and deployment status in real-time.",
-        image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=800&auto=format&fit=crop",
+        image: "/images/deploy-oke-atp-oci.png",
         link: "https://github.com/chaiyotmg",
-        tags: ["Kubernetes", "React", "Node.js"],
+        tags: [
+            { name: "Kubernetes", icon: "icons/kubernetes.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "React", icon: "icons/react.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "Node.js", icon: "icons/nestjs.svg", iconWidth: 14, iconHeight: 14 },
+        ],
     },
     {
         title: "Automated CI/CD Engine",
         description: "A custom automation engine that streamlines the build and deployment process for multi-language microservices into OpenShift environments.",
-        image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=800&auto=format&fit=crop",
+        image: "/images/deploy-oke-atp-oci.png",
         link: "https://github.com/chaiyotmg",
-        tags: ["Jenkins", "Shell Script", "OpenShift"],
+        tags: [
+            { name: "Jenkins", icon: "icons/githubactions.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "Shell Script", icon: "icons/linux.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "OpenShift", icon: "icons/redhat.svg", iconWidth: 14, iconHeight: 14 },
+        ],
     },
 ];
 
 export const profile: Profile = {
-    name: "Chaiyot Mali-ngam",
+    name: "~/.Chaiyot Mali-ngam/",
     nickname: "Pac",
     role: "Back-End Developer and DevOps Engineer",
     bio: "Back-End Developer and DevOps Engineer with 2+ years combined experience from project work and internships.",
@@ -39,64 +52,108 @@ export const profile: Profile = {
         whatsapp: "094-2647104",
         resume: process.env.NEXT_PUBLIC_RESUME_URL || "",
         location: "Bangkok, Thailand",
-    },
-    education: [
-        {
-            degree: "Bachelor of Science in Information Technology",
-            school: "Khon Kaen University",
-            period: "2020 - 2024",
-            gpax: "3.22/4.00",
-        },
-    ],
+    }
 };
 
 export const skills: Skill[] = [
     {
         category: "Languages",
+        icon: "Code2",
+        bgIcon: "Code2",
         items: [
-            { name: "Java" },
-            { name: "JavaScript" },
-            { name: "TypeScript" },
-            { name: "Node.js" },
-            { name: "Shell Script" },
+            { name: "Java", icon: "icons/java.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "TypeScript", icon: "icons/typescript.svg", iconWidth: 15, iconHeight: 15 },
+            { name: "JavaScript", icon: "icons/javascript.svg", iconWidth: 15, iconHeight: 15 },
+            { name: "Golang", icon: "icons/go.svg", iconWidth: 16, iconHeight: 16 },
         ],
     },
     {
-        category: "Frameworks & Libraries",
+        category: "Frontend",
+        icon: "Monitor",
+        bgIcon: "Monitor",
         items: [
-            { name: "Spring Boot" },
-            { name: "Nest.js" },
-            { name: "React.js" },
-            { name: "Vue.js" },
-            { name: "TailwindCSS" },
+            { name: "React.js", icon: "icons/react.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "Vue.js", icon: "icons/vuejs.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "TailwindCSS", icon: "icons/tailwindcss.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "SCSS", icon: "icons/scss.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "HTML5", icon: "icons/html.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "CSS3", icon: "icons/css.svg", iconWidth: 16, iconHeight: 16 },
         ],
     },
     {
-        category: "Databases",
+        category: "Backend",
+        icon: "Server",
+        bgIcon: "Server",
         items: [
-            { name: "PostgreSQL" },
-            { name: "MS SQL" },
-            { name: "MongoDB" },
-            { name: "Redis" },
+            { name: "Spring Boot", icon: "icons/spring.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "Nest.js", icon: "icons/nestjs.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "Express.js", icon: "icons/express.svg", iconWidth: 16, iconHeight: 16 },
         ],
     },
     {
-        category: "DevOps & Tools",
+        category: "Databases & Tools",
+        icon: "Database",
+        bgIcon: "Database",
         items: [
-            { name: "Docker" },
-            { name: "Kubernetes" },
-            { name: "OpenShift" },
-            { name: "Helm" },
-            { name: "GitHub Actions" },
-            { name: "Azure DevOps" },
-            { name: "Istio" },
+            { name: "PostgreSQL", icon: "icons/postgressql.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "MS SQL Server", icon: "icons/mssql.svg", iconWidth: 17, iconHeight: 17 },
+            { name: "MongoDB", icon: "icons/mongodb.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "Redis", icon: "icons/redis.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "Liquibase", icon: "icons/liquibase.svg", iconWidth: 16, iconHeight: 16 },
+        ],
+    },
+    {
+        category: "Containerization",
+        icon: "Box",
+        bgIcon: "Box",
+        items: [
+            { name: "Docker", icon: "icons/docker.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "Kubernetes", icon: "icons/kubernetes.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "OpenShift", icon: "icons/redhat.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "Helm", icon: "icons/helm.svg", iconWidth: 16, iconHeight: 16 },
+        ],
+    },
+    {
+        category: "Infrastructure",
+        icon: "Globe",
+        bgIcon: "Network",
+        items: [
+            { name: "Istio", icon: "icons/istioio.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "NGINX", icon: "icons/nginx.svg", iconWidth: 18, iconHeight: 18 },
+            { name: "PM2", icon: "icons/pm2.svg", iconWidth: 20, iconHeight: 20 },
+            { name: "Linux", icon: "icons/linux.svg", iconWidth: 16, iconHeight: 16 },
+        ],
+    },
+    {
+        category: "CI/CD",
+        icon: "Play",
+        bgIcon: "Repeat",
+        items: [
+            { name: "GitHub Actions", icon: "icons/githubactions.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "Azure DevOps", icon: "icons/azuredevops.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "GitLab CI", icon: "icons/gitlab.svg", iconWidth: 15, iconHeight: 15 },
+        ],
+    },
+    {
+        category: "Development Tools",
+        icon: "Terminal",
+        bgIcon: "Terminal",
+        items: [
+            { name: "Git", icon: "icons/git.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "Postman", icon: "icons/postman.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "Visual Studio Code", icon: "icons/vscode.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "IntelliJ IDEA", icon: "icons/intellij.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "Docker", icon: "icons/docker.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "GitHub", icon: "icons/github.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "GitLab", icon: "icons/gitlab.svg", iconWidth: 15, iconHeight: 15 },
+            { name: "DBrever", icon: "icons/dbeaver.svg", iconWidth: 16, iconHeight: 16 },
         ],
     },
 ];
 
 export const experiences: Experience[] = [
     {
-        company: "Advanced Info Service Public Company Limited",
+        company: "Advanced Info Service Public Company Limited (AIS) Outsource by Chareon Tut Company Limited",
         position: "Programmer",
         period: "Oct 2024 - Present",
         isCurrent: true,
@@ -137,5 +194,15 @@ export const experiences: Experience[] = [
             "POC for Liquibase database version control.",
             "Developed a release dashboard using React.js and Spring Boot.",
         ],
+    },
+];
+
+export const educations: Education[] = [
+    {
+        degree: "Bachelor of Science in Information Technology",
+        school: "Khon Kaen University",
+        period: "2020 - 2024",
+        gpax: "3.22 / 4.00",
+        icon: "GraduationCap",
     },
 ];
