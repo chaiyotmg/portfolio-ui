@@ -9,7 +9,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://chaiyot.dev"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_WEB_URL || "https://chaiyot.dev"),
   title: "Chaiyot Mali-ngam - Back-end Developer & DevOps Engineer",
   description: "Portfolio of Chaiyot Mali-ngam, a Back-end Developer and DevOps Engineer.",
   keywords: ["Back-end Developer", "DevOps Engineer", "Spring Boot", "Kubernetes", "Docker", "Chaiyot Mali-ngam", "Portfolio"],
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Chaiyot Mali-ngam - Back-end Developer & DevOps Engineer",
     description: "Portfolio of Chaiyot Mali-ngam, with experience in Spring Boot and DevOps.",
-    url: process.env.NEXT_PUBLIC_SITE_URL,
+    url: process.env.NEXT_PUBLIC_WEB_URL,
     siteName: "Chaiyot Portfolio",
     images: [
       {
@@ -45,7 +45,7 @@ const jsonLd = {
   "@type": "Person",
   name: "Chaiyot Mali-ngam",
   jobTitle: "Back-end Developer and DevOps Engineer",
-  url: process.env.NEXT_PUBLIC_SITE_URL,
+  url: process.env.NEXT_PUBLIC_WEB_URL,
   sameAs: [
     "https://github.com/chaiyotmg",
     "https://www.linkedin.com/in/chaiyot-mali-ngam"

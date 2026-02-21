@@ -18,6 +18,12 @@ FROM base AS prerelease
 COPY --from=install /temp/dev/node_modules node_modules
 COPY . .
 
+# ARG for build-time environment variables
+ARG NEXT_PUBLIC_WEB_URL
+ARG NEXT_PUBLIC_RESUME_URL
+ENV NEXT_PUBLIC_WEB_URL=$NEXT_PUBLIC_WEB_URL
+ENV NEXT_PUBLIC_RESUME_URL=$NEXT_PUBLIC_RESUME_URL
+
 # [optional] tests & build
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1

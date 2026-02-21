@@ -49,9 +49,7 @@ export const About = ({ name, bio, github, linkedin, resume }: AboutProps) => {
             window.URL.revokeObjectURL(url);
 
             toast.success("Download started!", { id: downloadToast });
-            console.log("Download started!");
         } catch (error) {
-            console.error("Error downloading resume:", error);
             toast.error("Failed to download resume. Please try again later.", { id: downloadToast });
 
             // Fallback: try opening in new tab if blob fetch fails (e.g. CORS)
