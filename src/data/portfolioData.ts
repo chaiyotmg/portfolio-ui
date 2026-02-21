@@ -1,6 +1,5 @@
 import { Profile, Skill, Experience, Project } from "@/domain/entities";
 
-// ... existing profile, skills, and experiences exports
 
 export const projects: Project[] = [
     {

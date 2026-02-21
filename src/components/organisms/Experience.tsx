@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 import { Experience as ExperienceType } from "@/domain/entities";
 import { SectionHeader } from "@/components/molecules/SectionHeader";
