@@ -36,6 +36,7 @@ build-app:
       if [ -z "$GITLAB_REGISTRY" ]; then echo "❌ Error: GITLAB_REGISTRY is not set"; exit 1; fi
     - echo "$GITLAB_TOKEN" | docker login $GITLAB_REGISTRY -u $GITLAB_USERNAME --password-stdin
   script:
+
     - |
       if [ -n "$CI_COMMIT_TAG" ]; then
         echo "Building from tag: $CI_COMMIT_TAG"
@@ -52,19 +53,18 @@ build-app:
       fi
 
     - |
-      ls -l
-      cat ./README.md
-    # - |
-    #   echo "Build app to docker image"
-    #   docker build --platform linux/arm64 \
-    #     --build-arg NEXT_PUBLIC_WEB_URL=$NEXT_PUBLIC_WEB_URL \
-    #     --build-arg NEXT_PUBLIC_RESUME_URL=$NEXT_PUBLIC_RESUME_URL \
-    #     -t $DOCKER_IMAGE:$BUILD_TAG .
-    #   docker image ls
-    # - |
-    #   echo "Push docker image to GitLab registry"
-    #   docker push $DOCKER_IMAGE:$BUILD_TAG
-    # - |
-    #   echo "Clean docker images"
-    #   docker rmi $DOCKER_IMAGE:$BUILD_TAG
-    #   docker image prune -f
+      echo "Build app to docker image"
+      docker build --platform linux/arm64 \
+        --build-arg NEXT_PUBLIC_WEB_URL=$NEXT_PUBLIC_WEB_URL \
+        --build-arg NEXT_PUBLIC_RESUME_URL=$NEXT_PUBLIC_RESUME_URL \
+        -t $DOCKER_IMAGE:$BUILD_TAG .
+      docker image ls
+
+    - |
+      echo "Push docker image to GitLab registry"
+      docker push $DOCKER_IMAGE:$BUILD_TAG
+      
+    - |
+      echo "Clean docker images"
+      docker rmi $DOCKER_IMAGE:$BUILD_TAG
+      docker image prune -f
