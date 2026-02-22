@@ -54,7 +54,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <Typography variant="h2" className="sm:text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+                    <Typography variant="h2" className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 text-slate-900">
                         The <span className="bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent">Project</span>
                     </Typography>
                     <div className="flex justify-center mb-4">

@@ -98,11 +98,11 @@ export const About = ({ name, bio, github, linkedin, resume }: AboutProps) => {
                                 repeat: Infinity,
                                 ease: "easeInOut",
                             }}
-                            className="w-full sm:w-auto"
+                            className="w-auto"
                         >
                             <Button
                                 variant="gradient"
-                                className="w-full sm:w-auto px-10 py-5 sm:px-12 sm:py-4 text-lg font-bold flex items-center justify-center gap-3 cursor-pointer shadow-xl shadow-emerald-500/20"
+                                className="w-auto sm:w-auto px-10 py-5 sm:px-12 sm:py-4 text-lg font-bold flex items-center justify-center gap-3 cursor-pointer shadow-xl shadow-emerald-500/20"
                                 onClick={handleDownload}
                             >
                                 <Icon icon="Download" size={20} />
