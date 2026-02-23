@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { PortfolioTemplate } from "@/components/templates/PortfolioTemplate";
 import { Navbar } from "@/components/organisms/Navbar";
 import { About } from "@/components/organisms/About";
@@ -11,6 +12,20 @@ import { Contact } from "@/components/organisms/Contact";
 import { profile, skills, experiences, projects, educations } from "@/data/portfolioData";
 
 export const HomePage = () => {
+    useEffect(() => {
+        const scrollTo = sessionStorage.getItem("scrollToSection");
+        if (scrollTo) {
+            const timer = setTimeout(() => {
+                const element = document.getElementById(scrollTo);
+                if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                }
+                sessionStorage.removeItem("scrollToSection");
+            }, 300);
+            return () => clearTimeout(timer);
+        }
+    }, []);
+
     return (
         <PortfolioTemplate
             navbar={<Navbar />}

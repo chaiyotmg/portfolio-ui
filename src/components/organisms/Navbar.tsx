@@ -109,7 +109,7 @@ export const Navbar = () => {
                                     onClick={() => scrollToSection(link.href)}
                                     whileHover={{ y: -2, scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className={`relative flex items-center gap-2 font-medium transition-colors cursor-pointer bg-transparent border-none p-0 ${isActive ? "text-emerald-500" : "text-slate-600 hover:text-emerald-500"}`}
+                                    className={`text-sm relative flex items-center gap-2 transition-colors cursor-pointer bg-transparent border-none p-0 ${isActive ? "text-emerald-500" : "text-slate-600 hover:text-emerald-500"}`}
                                 >
                                     <Icon icon={link.icon} size={18} />
                                     <span className="hidden lg:inline">{link.label}</span>
@@ -152,9 +152,9 @@ export const Navbar = () => {
                                         type="button"
                                         onClick={() => scrollToSection(link.href)}
                                         whileTap={{ scale: 0.98, x: 5 }}
-                                        className={`flex items-center gap-4 w-full text-left py-4 px-2 text-sm xs:text-base sm:text-lg font-medium cursor-pointer bg-transparent border-none transition-colors rounded-xl ${isActive ? "text-emerald-600 bg-emerald-50" : "text-slate-600 active:bg-slate-50"}`}
+                                        className={`text-sm flex items-center gap-4 w-full text-left py-4 px-2 font-medium cursor-pointer bg-transparent border-none transition-colors rounded-xl ${isActive ? "text-emerald-600 bg-emerald-50" : "text-slate-600 active:bg-slate-50"}`}
                                     >
-                                        <Icon icon={link.icon} size={18} className={isActive ? "text-emerald-600" : "text-slate-400"} />
+                                        <Icon icon={link.icon} size={18} className={`${isActive ? "text-emerald-600" : "text-slate-400"}`} />
                                         {link.label}
                                     </motion.button>
                                 );

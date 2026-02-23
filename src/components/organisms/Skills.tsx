@@ -72,15 +72,18 @@ export const Skills = ({ skills }: SkillsProps) => {
                     </div>
 
                     {/* Terminal Footer / Success Message */}
-                    <div className="bg-white/80 border-t border-slate-200/60 px-8 py-5 flex items-center gap-3">
-                        <div className="text-emerald-500 font-bold">→</div>
-                        <div className="text-slate-400 font-mono text-xs md:text-sm">
-                            <span className="text-emerald-600">~</span> echo <span className="text-slate-600">&quot;Stack Initialized Successfully.&quot;</span>
+                    <div className="bg-white/80 border-t border-slate-200/60 px-8 py-5 flex items-center gap-1.5">
+                        <div className="flex items-center gap-1.5 text-slate-400 font-mono text-xs">
+                            <span className="text-emerald-500 font-bold">chaiyot@linux</span>
+                            <span className="text-slate-400">:</span>
+                            <span className="text-emerald-400">~/techstack</span>
+                            <span className="text-slate-400">$</span>
+                            <span className="text-slate-600 ml-1">echo &quot;Stack Initialized Successfully.&quot;</span>
                         </div>
                         <motion.div
                             animate={{ opacity: [1, 0] }}
                             transition={{ duration: 0.8, repeat: Infinity }}
-                            className="w-2 h-4 bg-emerald-500 rounded-sm"
+                            className="w-1.5 h-4 bg-emerald-500 rounded-full"
                         />
                     </div>
                 </motion.div>

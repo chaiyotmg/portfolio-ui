@@ -5,37 +5,42 @@ export const projects: Project[] = [
     {
         title: "Portfolio UI",
         description: "A modern, responsive portfolio website featuring a unique terminal-inspired aesthetic, smooth animations with Framer Motion, and a clean light theme.",
-        image: "/images/portfolio-ui-bg.png", // Update this if you have a specific image path
-        link: "https://github.com/chaiyotmg/portfolio-ui",
+        fullDescription: "A high-performance portfolio website built with Next.js 14, focused on providing a developer-centric user experience with a terminal-themed UI.",
+        image: "/images/portfolio-ui-bg.png",
+        link: "/projects/portfolio-ui",
+        github: "https://github.com/chaiyotmg/portfolio-ui",
         tags: [
-            { name: "Next.js", icon: "icons/nextjs.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "TypeScript", icon: "icons/typescript.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "TailwindCSS", icon: "icons/tailwindcss.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "Bun.js", icon: "icons/bun.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "Next.js", icon: "/icons/nextjs.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "TypeScript", icon: "/icons/typescript.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "TailwindCSS", icon: "/icons/tailwindcss.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "Bun.js", icon: "/icons/bun.svg", iconWidth: 14, iconHeight: 14 },
         ],
+        caseStudy: {
+            problem: "Creating a portfolio that stands out while maintaining a formal professional look and showcasing technical DevOps/Backend skills.",
+            solution: "Implemented a 'Terminal-in-Light-Mode' aesthetic using Framer Motion for interactivity and Next.js for performance.",
+            techStackExplanation: "Next.js for SSR, Tailwind for rapid styling, and Framer Motion for the complex terminal animations.",
+            features: ["Interactive Terminal Components", "Responsive Design", "CI/CD Integrated", "Snapshot Deployment Strategy"],
+        },
     },
     {
         title: "K8s Deployment Dashboard",
         description: "A monitoring dashboard for Kubernetes clusters that visualizes pod health, resource usage, and deployment status in real-time.",
+        fullDescription: "A comprehensive dashboard for DevOps engineers to manage and monitor multiple Kubernetes clusters through a single interface.",
         image: "/images/deploy-oke-atp-oci.png",
-        link: "https://github.com/chaiyotmg",
+        link: "/projects/k8s-deployment-dashboard",
+        github: "https://github.com/chaiyotmg",
         tags: [
-            { name: "Kubernetes", icon: "icons/kubernetes.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "React", icon: "icons/react.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "Node.js", icon: "icons/nestjs.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "Kubernetes", icon: "/icons/kubernetes.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "React", icon: "/icons/react.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "Node.js", icon: "/icons/nestjs.svg", iconWidth: 14, iconHeight: 14 },
         ],
-    },
-    {
-        title: "Automated CI/CD Engine",
-        description: "A custom automation engine that streamlines the build and deployment process for multi-language microservices into OpenShift environments.",
-        image: "/images/deploy-oke-atp-oci.png",
-        link: "https://github.com/chaiyotmg",
-        tags: [
-            { name: "Jenkins", icon: "icons/githubactions.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "Shell Script", icon: "icons/linux.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "OpenShift", icon: "icons/redhat.svg", iconWidth: 14, iconHeight: 14 },
-        ],
-    },
+        caseStudy: {
+            problem: "Complexity of monitoring multiple clusters across different regions without a unified UI.",
+            solution: "Developed a real-time aggregator using WebSockets and Kubernetes API to stream pod status directly to the frontend.",
+            techStackExplanation: "React for the fluid UI, NestJS for the robust backend proxy, and official K8s client libraries.",
+            features: ["Real-time Pod Monitoring", "Resource Usage Visuals", "Cluster Health Alerts", "Deployment Management"],
+        },
+    }
 ];
 
 export const profile: Profile = {

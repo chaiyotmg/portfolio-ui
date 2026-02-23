@@ -1,24 +1,13 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Typography } from "@/components/atoms/Typography";
 import { Chip } from "@/components/atoms/Chip";
 import { Icon } from "@/components/atoms/Icon";
+import { Project } from "@/domain/entities";
 
-interface ProjectCardProps {
-    title: string;
-    description: string;
-    image: string;
-    link: string;
-    tags?: {
-        name: string;
-        icon?: string | React.ReactNode;
-        iconWidth?: number;
-        iconHeight?: number;
-    }[];
-}
-
-export const ProjectCard = ({ title, description, image, link, tags }: ProjectCardProps) => {
+export const ProjectCard = ({ title, description, image, link, github, tags }: Project) => {
     return (
         <div className="group bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 flex flex-col h-[480px] md:h-[560px] shadow-lg shadow-slate-200/40">
             {/* Terminal Top Bar */}
@@ -73,25 +62,28 @@ export const ProjectCard = ({ title, description, image, link, tags }: ProjectCa
                 </Typography>
 
                 <div className="mt-auto pt-4 border-t border-slate-50 flex justify-between items-center">
-                    <motion.a
-                        href={link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ x: 5 }}
-                        className="text-emerald-500 font-bold text-sm flex items-center gap-1.5 transition-all"
-                    >
-                        View System <Icon icon="Terminal" size={14} />
-                    </motion.a>
+                    <Link href={link}>
+                        <motion.div
+                            whileHover={{ x: 5 }}
+                            className="text-emerald-500 font-bold text-sm flex items-center gap-1.5 transition-all cursor-pointer"
+                        >
+                            Explore Details <Icon icon="Terminal" size={14} />
+                        </motion.div>
+                    </Link>
 
                     <div className="flex gap-2">
-                        <motion.a
-                            href="#"
-                            whileHover={{ scale: 1.1, rotate: 5 }}
-                            whileTap={{ scale: 0.9 }}
-                            className="p-2 bg-slate-50 rounded-lg text-slate-400 hover:bg-emerald-50 hover:text-emerald-500 transition-colors"
-                        >
-                            <Icon icon="Github" size={16} />
-                        </motion.a>
+                        {github && (
+                            <motion.a
+                                href={github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                whileHover={{ scale: 1.1, rotate: 5 }}
+                                whileTap={{ scale: 0.9 }}
+                                className="p-2 bg-slate-50 rounded-lg text-slate-400 hover:bg-emerald-50 hover:text-emerald-500 transition-colors"
+                            >
+                                <Icon icon="Github" size={16} />
+                            </motion.a>
+                        )}
                     </div>
                 </div>
             </div>

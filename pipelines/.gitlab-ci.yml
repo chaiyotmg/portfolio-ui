@@ -63,8 +63,12 @@ build-app:
     - |
       echo "Push docker image to GitLab registry"
       docker push $DOCKER_IMAGE:$BUILD_TAG
-      
+
     - |
       echo "Clean docker images"
       docker rmi $DOCKER_IMAGE:$BUILD_TAG
       docker image prune -f
+
+    - |
+      echo "Cleaning up temporary files..."
+      rm -rf $(pwd)/*

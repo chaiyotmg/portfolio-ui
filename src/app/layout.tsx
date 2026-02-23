@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: "Chaiyot Portfolio",
     images: [
       {
-        url: "/favicon.svg",
+        url: "/icons/favicon.svg",
         width: 800,
         height: 600,
       },
@@ -33,10 +33,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Chaiyot Mali-ngam - Back-end Developer & DevOps Engineer",
     description: "Portfolio of Chaiyot Mali-ngam, with experience in Spring Boot and DevOps.",
-    images: ["/favicon.svg"],
+    images: ["/icons/favicon.svg"],
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: "/icons/favicon.svg",
   },
 };
 

@@ -43,6 +43,14 @@ export interface Project {
   description: string;
   image: string;
   link: string;
+  github?: string;
+  fullDescription?: string;
+  caseStudy?: {
+    problem: string;
+    solution: string;
+    techStackExplanation: string;
+    features: string[];
+  };
   tags?: {
     name: string;
     icon?: string | React.ReactNode;

@@ -31,9 +31,6 @@ bun run dev
 ```bash
 # Create a production build
 bun run build
-
-# Start the production server
-bun run start
 ```
 
 ## 📂 Project Structure
@@ -49,6 +46,3 @@ src/
 ---
 
 Built with 💚 by [Chaiyot Mali-ngam](https://github.com/chaiyotmg)
-
-
-"test"
