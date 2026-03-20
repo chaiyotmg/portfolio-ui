@@ -49,7 +49,7 @@ export const HomePage = () => {
             <Skills skills={skills} />
             <Experience experiences={experiences} />
             <Education educations={educations} />
-            {projects[1] && <ProjectHighlight project={projects[1]} />}
+            {projects[0] && <ProjectHighlight project={projects[0]} />}
             <Projects projects={projects} />
             <Contact contact={profile.contact} />
         </PortfolioTemplate>

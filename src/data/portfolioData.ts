@@ -2,41 +2,7 @@ import { Profile, Skill, Experience, Project, Education } from "@/domain/entitie
 
 
 export const projects: Project[] = [
-    {
-        title: "Portfolio UI",
-        description: "A portfolio website showcasing my personal projects and professional achievements.",
-        fullDescription: "A portfolio website showcasing my personal projects and professional achievements, capturing my evolution from university student to software developer.",
-        image: "https://objectstorage.ap-singapore-1.oraclecloud.com/n/axkttai9whfx/b/bucket-portfolio-ui/o/projects/portfolio-ui-bg.png",
-        link: "/projects/portfolio-ui",
-        github: "https://github.com/chaiyotmg/portfolio-ui",
-        tags: [
-            { name: "Next.js", icon: "/icons/nextjs.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "TypeScript", icon: "/icons/typescript.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "React.js", icon: "/icons/react.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "TailwindCSS", icon: "/icons/tailwindcss.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "Bun.js", icon: "/icons/bun.svg", iconWidth: 14, iconHeight: 14 },
-
-        ],
-        caseStudy: {
-            architecture: "GitLab CI/CD & Deployed on OCI Kubernetes Engine.",
-            techStack: [
-                { name: "Next.js", icon: "/icons/nextjs.svg" },
-                { name: "TypeScript", icon: "/icons/typescript.svg" },
-                { name: "TailwindCSS", icon: "/icons/tailwindcss.svg" },
-                { name: "Bun.js", icon: "/icons/bun.svg" },
-                { name: "OpenTelemetry", icon: "/icons/open-telemetry.svg" },
-            ],
-            features: [
-                "Animations with Framer Motion",
-                "Responsive Design",
-                "CI/CD Integrated",
-                "SSR"
-            ],
-        },
-        imageOrientation: "horizontal",
-        imageObjectFit: "cover",
-    },
-    {
+       {
         title: "OCI Kubernetes Engine (OKE)",
         description: "A OCI Kubernetes Engine (OKE) cluster for production applications and technical labs.",
         fullDescription: "An OCI Kubernetes Engine (OKE) cluster used for deploying personal applications and running lab environments to explore emerging technologies and enhance my DevOps and cloud engineering skill set.",
@@ -81,6 +47,41 @@ export const projects: Project[] = [
         imageOrientation: "horizontal",
         imageObjectFit: "cover",
     },
+    {
+        title: "Portfolio UI",
+        description: "A portfolio website showcasing my personal projects and professional achievements.",
+        fullDescription: "A portfolio website showcasing my personal projects and professional achievements, capturing my evolution from university student to software developer.",
+        image: "https://objectstorage.ap-singapore-1.oraclecloud.com/n/axkttai9whfx/b/bucket-portfolio-ui/o/projects/portfolio-ui-bg.png",
+        link: "/projects/portfolio-ui",
+        github: "https://github.com/chaiyotmg/portfolio-ui",
+        tags: [
+            { name: "Next.js", icon: "/icons/nextjs.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "TypeScript", icon: "/icons/typescript.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "React.js", icon: "/icons/react.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "TailwindCSS", icon: "/icons/tailwindcss.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "Bun.js", icon: "/icons/bun.svg", iconWidth: 14, iconHeight: 14 },
+
+        ],
+        caseStudy: {
+            architecture: "GitLab CI/CD & Deployed on OCI Kubernetes Engine.",
+            techStack: [
+                { name: "Next.js", icon: "/icons/nextjs.svg" },
+                { name: "TypeScript", icon: "/icons/typescript.svg" },
+                { name: "TailwindCSS", icon: "/icons/tailwindcss.svg" },
+                { name: "Bun.js", icon: "/icons/bun.svg" },
+                { name: "OpenTelemetry", icon: "/icons/open-telemetry.svg" },
+            ],
+            features: [
+                "Animations with Framer Motion",
+                "Responsive Design",
+                "CI/CD Integrated",
+                "SSR"
+            ],
+        },
+        imageOrientation: "horizontal",
+        imageObjectFit: "cover",
+    },
+
     {
         title: "react-native-swipeable-list-view",
         description: "A React Native library for creating swipeable list views with minimal code and better component separation.",
