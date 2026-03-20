@@ -142,13 +142,16 @@ export const ZoomableImage = ({ image, svg, alt }: ZoomableImageProps) => {
                                     }}
                                     dragElastic={0}
                                     dragMomentum={false}
+                                    onLoad={() => {
+                                        // This handles the motion.div size if needed
+                                    }}
                                 >
                                     {isSvg ? (
                                         isSvgLoading ? (
-                                            <div className="w-[80vw] h-[60vh] bg-slate-100 animate-pulse rounded-xl flex items-center justify-center">
+                                            <div className="w-[80vw] h-[60vh] bg-slate-100/10 animate-pulse rounded-xl flex items-center justify-center">
                                                 <div className="flex flex-col items-center gap-4">
                                                     <div className="w-12 h-12 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin" />
-                                                    <span className="text-slate-400 font-mono text-xs animate-pulse">LOADING ...</span>
+                                                    <span className="text-slate-400 font-mono text-xs animate-pulse">LOADING ARCHITECTURE ...</span>
                                                 </div>
                                             </div>
                                         ) : (
@@ -159,12 +162,13 @@ export const ZoomableImage = ({ image, svg, alt }: ZoomableImageProps) => {
                                             />
                                         )
                                     ) : (
-                                        <div className="relative w-screen h-screen bg-transparent">
+                                        <div className="relative w-screen h-screen bg-transparent flex items-center justify-center">
                                             <Image
                                                 src={image}
                                                 alt={alt}
                                                 fill
-                                                loading="lazy"
+                                                loading="eager"
+                                                showLoader={true}
                                                 onLoad={(e) => {
                                                     const img = e.currentTarget;
                                                     setImageSize({ width: img.naturalWidth, height: img.naturalHeight });
