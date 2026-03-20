@@ -272,7 +272,7 @@ export const skills: Skill[] = [
 export const experiences: Experience[] = [
     {
         company: "Advanced Info Service Public Company Limited (AIS) Outsource by Chareon Tut Company Limited",
-        position: "Programmer",
+        position: "Programmer (Full-time)",
         period: "Oct 2024 - Present",
         isCurrent: true,
         description: [
@@ -287,7 +287,7 @@ export const experiences: Experience[] = [
     },
     {
         company: "Sirisoft Public Company Limited",
-        position: "Software Developer",
+        position: "Software Developer (Full-time)",
         period: "May - Sep 2024",
         description: [
             "Refactored Spring Boot batch jobs from large transactions to row-by-row updates, eliminating deadlocks and lock contention.",
