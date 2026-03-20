@@ -43,6 +43,7 @@ export interface Project {
   svg?: string;
   link: string;
   github?: string;
+  npm?: string;
   fullDescription?: string;
   caseStudy?: {
     architecture?: string;
@@ -60,6 +61,8 @@ export interface Project {
     iconWidth?: number;
     iconHeight?: number;
   }[];
+  imageOrientation?: "vertical" | "horizontal";
+  imageObjectFit?: "cover" | "contain" | "fill" | "none" | "scale-down";
   icon?: string | React.ReactNode;
 }
 

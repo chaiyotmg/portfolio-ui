@@ -7,9 +7,9 @@ import { Chip } from "@/components/atoms/Chip";
 import { Icon } from "@/components/atoms/Icon";
 import { Project } from "@/domain/entities";
 
-export const ProjectCard = ({ title, description, image, link, github, tags }: Project) => {
+export const ProjectCard = ({ title, description, image, link, github, tags, imageOrientation = "horizontal", imageObjectFit = "cover" }: Project) => {
     return (
-        <div className="group bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-2xl hover:shadow-emerald-500/10 transition-[box-shadow,border-color,background-color] duration-500 flex flex-col h-[480px] md:h-[560px] shadow-lg shadow-slate-200/40">
+        <div className="group bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-2xl hover:shadow-emerald-500/10 transition-[box-shadow,border-color,background-color] duration-500 flex flex-col h-[480px] md:h-[600px] shadow-lg shadow-slate-200/40">
             {/* Terminal Top Bar */}
             <div className="bg-slate-50/80 border-b border-slate-100 px-6 py-4 flex items-center justify-between">
                 <div className="flex gap-2">
@@ -23,15 +23,17 @@ export const ProjectCard = ({ title, description, image, link, github, tags }: P
                 </div>
             </div>
 
-            <Image
-                src={image}
-                alt={title}
-                fill
-                hoverScale
-                className="w-full h-[160px] md:h-[200px] transition-transform duration-700"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                loading="lazy"
-            />
+            <div className={`relative w-full ${imageOrientation === "vertical" ? "h-[280px] md:h-[340px]" : "h-[160px] md:h-[200px]"} bg-slate-50 overflow-hidden`}>
+                <Image
+                    src={image}
+                    alt={title}
+                    fill
+                    hoverScale
+                    className={`w-full h-full transition-transform duration-700 object-${imageObjectFit}`}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    loading="lazy"
+                />
+            </div>
 
             {/* Content Section */}
             <div className="p-6 md:p-8 flex flex-col flex-grow">

@@ -10,9 +10,11 @@ interface ZoomableImageProps {
     image: string;
     svg?: string;
     alt: string;
+    imageOrientation?: "vertical" | "horizontal";
+    imageObjectFit?: "cover" | "contain" | "fill" | "none" | "scale-down";
 }
 
-export const ZoomableImage = ({ image, svg, alt }: ZoomableImageProps) => {
+export const ZoomableImage = ({ image, svg, alt, imageOrientation = "horizontal", imageObjectFit = "cover" }: ZoomableImageProps) => {
     const [isIdOpen, setIsIdOpen] = useState(false);
     const [scale, setScale] = useState(0.5);
     const [svgContent, setSvgContent] = useState<string | null>(null);
@@ -83,13 +85,13 @@ export const ZoomableImage = ({ image, svg, alt }: ZoomableImageProps) => {
                 className="relative group/thumb cursor-zoom-in"
                 onClick={() => setIsIdOpen(true)}
             >
-                <div className="relative w-full h-[240px] md:h-[400px] bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-2xl shadow-slate-200/50">
+                <div className={`relative w-full ${imageOrientation === "vertical" ? "h-[500px] md:h-[800px]" : "h-[240px] md:h-[400px]"} bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-2xl shadow-slate-200/50`}>
                     <Image
                         src={image}
                         alt={alt}
                         fill
                         loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover/thumb:scale-105"
+                        className={`w-full h-full object-${imageObjectFit} transition-transform duration-700 group-hover/thumb:scale-105`}
 
                     />
 

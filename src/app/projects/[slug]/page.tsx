@@ -80,6 +80,8 @@ export default function ProjectShowcasePage() {
                             image={project.image}
                             svg={project.svg}
                             alt={project.title}
+                            imageOrientation={project.imageOrientation}
+                            imageObjectFit={project.imageObjectFit}
                         />
 
                         {/* Case Study Details */}
@@ -138,8 +140,8 @@ export default function ProjectShowcasePage() {
                         )}
 
                             {/* Action Buttons */}
-                            {project.github && (
-                                <div className="mt-16 pt-8 border-t border-slate-100 flex flex-wrap gap-4">
+                            <div className="mt-16 pt-8 border-t border-slate-100 flex flex-wrap gap-4">
+                                {project.github && (
                                     <motion.a
                                         href={project.github}
                                         target="_blank"
@@ -151,8 +153,30 @@ export default function ProjectShowcasePage() {
                                         <Icon icon="Github" size={18} className="group-hover:rotate-12 transition-transform" />
                                         Source Code
                                     </motion.a>
-                                </div>
-                            )}
+                                )}
+
+                                {project.npm && (
+                                    <motion.a
+                                        href={project.npm}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        whileHover={{ y: -2 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-xl font-bold text-sm group shadow-md"
+                                    >             
+                                    
+                                        <Image
+                                        src={"/icons/npm.svg"}
+                                        alt={"icon"}
+                                        width={22}
+                                        height={22}
+                                        className="group-hover:rotate-12 transition-transform"
+                                        loading="lazy"
+                                        />
+                                        NPM Package
+                                    </motion.a>
+                                )}
+                            </div>
                    
                     </div>
 

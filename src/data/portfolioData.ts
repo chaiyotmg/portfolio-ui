@@ -33,6 +33,8 @@ export const projects: Project[] = [
                 "SSR"
             ],
         },
+        imageOrientation: "horizontal",
+        imageObjectFit: "cover",
     },
     {
         title: "OCI Kubernetes Engine (OKE)",
@@ -76,6 +78,39 @@ export const projects: Project[] = [
                 "Load Balancing"
             ],
         },
+        imageOrientation: "horizontal",
+        imageObjectFit: "cover",
+    },
+    {
+        title: "react-native-swipeable-list-view",
+        description: "A React Native library for creating swipeable list views with minimal code and better component separation.",
+        fullDescription: "A project developed during university as a library for React Native, built on top of the powerful \"react-native-gesture-handler\" to simplify the implementation of swipeable list views. It focuses on reducing boilerplate code and providing a modular component structure for developers, making it easy to integrate actions like delete, favorite, or share.",
+        image: "https://objectstorage.ap-singapore-1.oraclecloud.com/n/axkttai9whfx/b/bucket-portfolio-ui/o/projects%2Freact-native-swipeable-list-view.gif",
+        link: "/projects/react-native-swipeable-list-view",
+        github: "https://github.com/chaiyotmg/react-native-swipeable-list-view",
+        npm: "https://www.npmjs.com/package/react-native-swipeable-list-view",
+        tags: [
+            { name: "React Native", icon: "/icons/react.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "TypeScript", icon: "/icons/typescript.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "NPM", icon: "/icons/npm.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "JavaScript", icon: "/icons/javascript.svg", iconWidth: 14, iconHeight: 14 },
+        ],
+        caseStudy: {
+            techStack: [
+                { name: "React Native", icon: "/icons/react.svg" },
+                { name: "TypeScript", icon: "/icons/typescript.svg" },
+                { name: "NPM", icon: "/icons/npm.svg" },
+                { name: "react-native-gesture-handler", icon: "/icons/npm.svg" },
+                { name: "JavaScript", icon: "/icons/javascript.svg" },
+            ],
+            features: [
+                "Simplified Swipeable List Implementation",
+                "Reduced Boilerplate Code",
+                "Published on NPM Registry"
+            ],
+        },
+        imageOrientation: "vertical",
+        imageObjectFit: "contain",
     }
 ];
 
@@ -112,6 +147,7 @@ export const skills: Skill[] = [
         bgIcon: "Monitor",
         items: [
             { name: "React.js", icon: "/icons/react.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "React Native", icon: "/icons/react.svg", iconWidth: 16, iconHeight: 16 },
             { name: "Vue.js", icon: "/icons/vuejs.svg", iconWidth: 16, iconHeight: 16 },
             { name: "TailwindCSS", icon: "/icons/tailwindcss.svg", iconWidth: 16, iconHeight: 16 },
             { name: "SCSS", icon: "/icons/scss.svg", iconWidth: 16, iconHeight: 16 },
