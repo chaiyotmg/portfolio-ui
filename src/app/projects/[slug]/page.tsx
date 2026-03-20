@@ -110,7 +110,7 @@ export default function ProjectShowcasePage() {
                                         <div className="p-2 bg-blue-50 rounded-lg shadow-sm border border-blue-100/50">
                                             <Icon icon="Cpu" size={20} className="text-blue-500" />
                                         </div>
-                                        <h3 className="font-bold text-slate-800 tracking-widest text-[9px] sm:text-[10px] md:text-sm uppercase">Technologies used</h3>
+                                        <h3 className="font-bold text-slate-800 tracking-widest text-[9px] sm:text-[10px] md:text-sm">Technologies used</h3>
                                     </div>
 
                                     <div className="flex flex-wrap gap-2.5 mb-10">
