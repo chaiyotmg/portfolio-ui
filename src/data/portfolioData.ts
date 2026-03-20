@@ -2,39 +2,7 @@ import { Profile, Skill, Experience, Project, Education } from "@/domain/entitie
 
 
 export const projects: Project[] = [
-    {
-        title: "Portfolio UI",
-        description: "A portfolio website showcasing my personal projects and professional achievements.",
-        fullDescription: "A portfolio website showcasing my personal projects and professional achievements, capturing my evolution from university student to software developer.",
-        image: "https://objectstorage.ap-singapore-1.oraclecloud.com/n/axkttai9whfx/b/bucket-portfolio-ui/o/projects/portfolio-ui-bg.png",
-        link: "/projects/portfolio-ui",
-        github: "https://github.com/chaiyotmg/portfolio-ui",
-        tags: [
-            { name: "Next.js", icon: "/icons/nextjs.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "TypeScript", icon: "/icons/typescript.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "React.js", icon: "/icons/react.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "TailwindCSS", icon: "/icons/tailwindcss.svg", iconWidth: 14, iconHeight: 14 },
-            { name: "Bun.js", icon: "/icons/bun.svg", iconWidth: 14, iconHeight: 14 },
-
-        ],
-        caseStudy: {
-            architecture: "GitLab CI/CD & Deployed on OCI Kubernetes Engine.",
-            techStack: [
-                { name: "Next.js", icon: "/icons/nextjs.svg" },
-                { name: "TypeScript", icon: "/icons/typescript.svg" },
-                { name: "TailwindCSS", icon: "/icons/tailwindcss.svg" },
-                { name: "Bun.js", icon: "/icons/bun.svg" },
-                { name: "OpenTelemetry", icon: "/icons/open-telemetry.svg" },
-            ],
-            features: [
-                "Animations with Framer Motion",
-                "Responsive Design",
-                "CI/CD Integrated",
-                "SSR"
-            ],
-        },
-    },
-    {
+       {
         title: "OCI Kubernetes Engine (OKE)",
         description: "A OCI Kubernetes Engine (OKE) cluster for production applications and technical labs.",
         fullDescription: "An OCI Kubernetes Engine (OKE) cluster used for deploying personal applications and running lab environments to explore emerging technologies and enhance my DevOps and cloud engineering skill set.",
@@ -76,6 +44,104 @@ export const projects: Project[] = [
                 "Load Balancing"
             ],
         },
+        imageOrientation: "horizontal",
+        imageObjectFit: "cover",
+    },
+    {
+        title: "Portfolio UI",
+        description: "A portfolio website showcasing my personal projects and professional achievements.",
+        fullDescription: "A portfolio website showcasing my personal projects and professional achievements, capturing my evolution from university student to software developer.",
+        image: "https://objectstorage.ap-singapore-1.oraclecloud.com/n/axkttai9whfx/b/bucket-portfolio-ui/o/projects/portfolio-ui-bg.png",
+        link: "/projects/portfolio-ui",
+        github: "https://github.com/chaiyotmg/portfolio-ui",
+        tags: [
+            { name: "Next.js", icon: "/icons/nextjs.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "TypeScript", icon: "/icons/typescript.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "React.js", icon: "/icons/react.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "TailwindCSS", icon: "/icons/tailwindcss.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "Bun.js", icon: "/icons/bun.svg", iconWidth: 14, iconHeight: 14 },
+
+        ],
+        caseStudy: {
+            architecture: "GitLab CI/CD & Deployed on OCI Kubernetes Engine.",
+            techStack: [
+                { name: "Next.js", icon: "/icons/nextjs.svg" },
+                { name: "TypeScript", icon: "/icons/typescript.svg" },
+                { name: "TailwindCSS", icon: "/icons/tailwindcss.svg" },
+                { name: "Bun.js", icon: "/icons/bun.svg" },
+                { name: "OpenTelemetry", icon: "/icons/open-telemetry.svg" },
+            ],
+            features: [
+                "Animations with Framer Motion",
+                "Responsive Design",
+                "CI/CD Integrated",
+                "SSR"
+            ],
+        },
+        imageOrientation: "horizontal",
+        imageObjectFit: "cover",
+    },
+
+    {
+        title: "react-native-swipeable-list-view",
+        description: "A React Native library for creating swipeable list views with minimal code and better component separation.",
+        fullDescription: "A project developed during university as a library for React Native, built on top of the powerful \"react-native-gesture-handler\" to simplify the implementation of swipeable list views. It focuses on reducing boilerplate code and providing a modular component structure for developers, making it easy to integrate actions like delete, favorite, or share.",
+        image: "https://objectstorage.ap-singapore-1.oraclecloud.com/n/axkttai9whfx/b/bucket-portfolio-ui/o/projects%2Freact-native-swipeable-list-view.gif",
+        link: "/projects/react-native-swipeable-list-view",
+        github: "https://github.com/chaiyotmg/react-native-swipeable-list-view",
+        npm: "https://www.npmjs.com/package/react-native-swipeable-list-view",
+        tags: [
+            { name: "React Native", icon: "/icons/react.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "TypeScript", icon: "/icons/typescript.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "NPM", icon: "/icons/npm.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "JavaScript", icon: "/icons/javascript.svg", iconWidth: 14, iconHeight: 14 },
+        ],
+        caseStudy: {
+            techStack: [
+                { name: "React Native", icon: "/icons/react.svg" },
+                { name: "TypeScript", icon: "/icons/typescript.svg" },
+                { name: "NPM", icon: "/icons/npm.svg" },
+                { name: "react-native-gesture-handler", icon: "/icons/npm.svg" },
+                { name: "JavaScript", icon: "/icons/javascript.svg" },
+            ],
+            features: [
+                "Simplified Swipeable List Implementation",
+                "Reduced Boilerplate Code",
+                "Published on NPM Registry"
+            ],
+        },
+        imageOrientation: "vertical",
+        imageObjectFit: "contain",
+    },
+    {
+        title: "Decrypt PGP files on AWS Lambda",
+        description: "A Node.js AWS Lambda function for decrypting PGP encrypted files retrieved from an AWS S3 bucket.",
+        fullDescription: "A serverless solution designed to automate the process of decrypting PGP encrypted files. Built on AWS Lambda using Node.js, it integrates with S3 for file processing and storage, utilizes custom Lambda Layers for dependency management (OpenPGP, Dotenv).",
+        image: "https://objectstorage.ap-singapore-1.oraclecloud.com/n/axkttai9whfx/b/bucket-portfolio-ui/o/projects%2Fopenpgpjs.png",
+        link: "/projects/decrypt-pgp-nodejs",
+        github: "https://github.com/chaiyotmg/decrypt-pgp-nodejs",
+        tags: [
+            { name: "AWS Lambda", icon: "/icons/aws-lambda.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "Node.js", icon: "/icons/javascript.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "AWS S3", icon: "/icons/amazon-s3.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "OpenPGP", icon: "Lock", iconWidth: 14, iconHeight: 14  },
+        ],
+        caseStudy: {
+            architecture: "Serverless architecture using AWS Lambda (Node.js 18.x) and S3 bucket integration. Dependencies are managed via custom Lambda Layers (openpgp-layer, dotenv-layer).",
+            techStack: [
+                { name: "AWS Lambda", icon: "/icons/aws-lambda.svg" },
+                { name: "AWS S3", icon: "/icons/amazon-s3.svg" },
+                { name: "Node.js", icon: "/icons/javascript.svg" },
+                { name: "OpenPGP", icon: "Lock" },
+            ],
+            features: [
+                "Automated PGP Decryption",
+                "AWS S3 Lifecycle Integration",
+                "Custom Lambda Layers Support (Node.js 18.x)",
+            ],
+        },
+        imageOrientation: "horizontal",
+        imageObjectFit: "contain",
     }
 ];
 
@@ -112,6 +178,7 @@ export const skills: Skill[] = [
         bgIcon: "Monitor",
         items: [
             { name: "React.js", icon: "/icons/react.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "React Native", icon: "/icons/react.svg", iconWidth: 16, iconHeight: 16 },
             { name: "Vue.js", icon: "/icons/vuejs.svg", iconWidth: 16, iconHeight: 16 },
             { name: "TailwindCSS", icon: "/icons/tailwindcss.svg", iconWidth: 16, iconHeight: 16 },
             { name: "SCSS", icon: "/icons/scss.svg", iconWidth: 16, iconHeight: 16 },
@@ -205,7 +272,7 @@ export const skills: Skill[] = [
 export const experiences: Experience[] = [
     {
         company: "Advanced Info Service Public Company Limited (AIS) Outsource by Chareon Tut Company Limited",
-        position: "Programmer",
+        position: "Programmer (Full-time)",
         period: "Oct 2024 - Present",
         isCurrent: true,
         description: [
@@ -220,7 +287,7 @@ export const experiences: Experience[] = [
     },
     {
         company: "Sirisoft Public Company Limited",
-        position: "Software Developer",
+        position: "Software Developer (Full-time)",
         period: "May - Sep 2024",
         description: [
             "Refactored Spring Boot batch jobs from large transactions to row-by-row updates, eliminating deadlocks and lock contention.",

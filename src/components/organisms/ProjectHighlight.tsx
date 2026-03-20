@@ -44,10 +44,10 @@ export const ProjectHighlight = ({ project }: { project: Project }) => {
                                 {project.tags?.slice(0, 4).map((tag, idx) => (
                                     <div 
                                         key={idx} 
-                                        className="flex items-center gap-2.5 px-5 py-3 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-emerald-200 transition-colors group"
+                                        className="flex items-center gap-2.5 px-5 py-3 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-emerald-200 transition-colors"
                                     >
                                         {typeof tag.icon === 'string' && tag.icon.startsWith('/') ? (
-                                            <div className="w-5 h-5 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all opacity-60 group-hover:opacity-100">
+                                            <div className="w-5 h-5 flex items-center justify-center transition-all">
                                                 <img src={tag.icon} className="w-full h-full object-contain" alt={tag.name} />
                                             </div>
                                         ) : (
