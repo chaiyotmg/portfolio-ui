@@ -65,7 +65,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
                     </div>
                 </motion.div>
 
-                <div className="relative mt-16 px-4 touch-none">
+                <div className="relative mt-16 px-4 touch-pan-y">
                     <div className="relative overflow-visible">
                         <motion.div
                             className="flex gap-6 md:gap-8 cursor-grab active:cursor-grabbing"
