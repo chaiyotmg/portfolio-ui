@@ -41,7 +41,7 @@ export default function ProjectShowcasePage() {
                 </footer>
             }
         >
-            <div className="max-w-4xl mx-auto py-12 px-6">
+            <div className="max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-6">
                 {/* Case Study Terminal Window */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.98 }}
@@ -50,7 +50,7 @@ export default function ProjectShowcasePage() {
                     className="bg-white border border-slate-200 rounded-[2rem] shadow-2xl shadow-slate-200/50 overflow-hidden"
                 >
                     {/* Terminal Top Bar */}
-                    <div className="bg-slate-50/80 border-b border-slate-100 px-8 py-5 flex items-center justify-between">
+                    <div className="bg-slate-50/80 border-b border-slate-100 px-5 sm:px-8 py-4 sm:py-5 flex items-center justify-between">
                         <div className="flex gap-2">
                             <div className="w-3.5 h-3.5 rounded-full bg-red-400/80 shadow-sm" />
                             <div className="w-3.5 h-3.5 rounded-full bg-yellow-400/80 shadow-sm" />
@@ -63,14 +63,14 @@ export default function ProjectShowcasePage() {
                     </div>
 
                     {/* Content */}
-                    <div className="p-8 md:p-12">
+                    <div className="p-6 sm:p-8 md:p-12">
                         {/* Header Section */}
                         <div className="mb-12">
-                            <Typography variant="h3" className="text-2xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">
+                            <Typography variant="h3" className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-6 tracking-tight">
                                 {project.title}
                             </Typography>
 
-                            <Typography variant="p" className="text-lg text-slate-600 leading-relaxed max-w-2xl border-l-4 border-emerald-500 pl-6">
+                            <Typography variant="p" className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-2xl border-l-4 border-emerald-500 pl-6">
                                 {project.fullDescription || project.description}
                             </Typography>
                         </div>
@@ -99,7 +99,7 @@ export default function ProjectShowcasePage() {
                                         </div>
                                         <span className="font-bold text-sm tracking-widest">Deployment & Architecture</span>
                                     </div>
-                                    <p className="text-slate-600 text-sm md:text-base leading-relaxed relative z-10">
+                                    <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed relative z-10">
                                         {project.caseStudy.architecture}
                                     </p>
                                 </div>
@@ -110,7 +110,7 @@ export default function ProjectShowcasePage() {
                                         <div className="p-2 bg-blue-50 rounded-lg shadow-sm border border-blue-100/50">
                                             <Icon icon="Cpu" size={20} className="text-blue-500" />
                                         </div>
-                                        <h3 className="font-bold text-slate-800 tracking-widest text-[10px] md:text-sm">Technologies used</h3>
+                                        <h3 className="font-bold text-slate-800 tracking-widest text-[9px] sm:text-[10px] md:text-sm uppercase">Technologies used</h3>
                                     </div>
 
                                     <div className="flex flex-wrap gap-2.5 mb-10">
@@ -129,7 +129,7 @@ export default function ProjectShowcasePage() {
                                     {/* Features List */}
                                     <div className="grid sm:grid-cols-2 gap-4">
                                         {project.caseStudy.features.map((feature, idx) => (
-                                            <div key={idx} className="flex items-center gap-3 p-3 bg-white/60 rounded-xl border border-slate-100/50 text-slate-500 text-[10px] md:text-xs">
+                                            <div key={idx} className="flex items-center gap-3 p-3 bg-white/60 rounded-xl border border-slate-100/50 text-slate-500 text-[9px] sm:text-[10px] md:text-xs">
                                                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                                                 {feature}
                                             </div>
@@ -140,7 +140,7 @@ export default function ProjectShowcasePage() {
                         )}
 
                             {/* Action Buttons */}
-                            <div className="mt-16 pt-8 border-t border-slate-100 flex flex-wrap gap-4">
+                            <div className="mt-10 sm:mt-16 pt-8 border-t border-slate-100 flex flex-wrap gap-4">
                                 {project.github && (
                                     <motion.a
                                         href={project.github}
@@ -148,7 +148,7 @@ export default function ProjectShowcasePage() {
                                         rel="noopener noreferrer"
                                         whileHover={{ y: -2 }}
                                         whileTap={{ scale: 0.98 }}
-                                        className="flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-bold text-sm group"
+                                        className="flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3 bg-slate-900 text-white rounded-xl font-bold text-xs sm:text-sm group"
                                     >
                                         <Icon icon="Github" size={18} className="group-hover:rotate-12 transition-transform" />
                                         Source Code
@@ -162,15 +162,15 @@ export default function ProjectShowcasePage() {
                                         rel="noopener noreferrer"
                                         whileHover={{ y: -2 }}
                                         whileTap={{ scale: 0.98 }}
-                                        className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-xl font-bold text-sm group shadow-md"
+                                        className="flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3 bg-white text-black rounded-xl font-bold text-xs sm:text-sm group shadow-md"
                                     >             
                                     
                                         <Image
                                         src={"/icons/npm.svg"}
                                         alt={"icon"}
-                                        width={22}
-                                        height={22}
-                                        className="group-hover:rotate-12 transition-transform"
+                                        width={18}
+                                        height={18}
+                                        className="sm:w-[22px] sm:h-[22px] group-hover:rotate-12 transition-transform"
                                         loading="lazy"
                                         />
                                         NPM Package
@@ -212,7 +212,7 @@ export default function ProjectShowcasePage() {
                             <div className="p-2 bg-emerald-50 rounded-lg">
                                 <Icon icon="Layers" size={20} className="text-emerald-500" />
                             </div>
-                            <Typography variant="h3" className="text-2xl font-bold text-slate-900 tracking-tight">
+                            <Typography variant="h3" className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
                                 More Projects
                             </Typography>
                         </div>
