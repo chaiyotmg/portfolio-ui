@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 export const ProjectHighlight = ({ project }: { project: Project }) => {
     return (
-        <section className="py-24 relative overflow-hidden bg-white">
+        <section id="projects-highlight" className="py-24 relative overflow-hidden bg-white">
             {/* Background subtle gradients */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[140px] -mr-64 -mt-32" />

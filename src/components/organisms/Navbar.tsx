@@ -15,7 +15,7 @@ const navLinks: NavLink[] = [
     { label: "About", href: "about", icon: "User" },
     { label: "Skills", href: "skills", icon: "Code2" },
     { label: "Experience", href: "experience", icon: "Briefcase" },
-    { label: "Projects", href: "projects", icon: "FolderOpen" },
+    { label: "Projects", href: "projects-highlight", icon: "FolderOpen" },
     { label: "Contact", href: "contact", icon: "Mail" },
 ];
 
@@ -39,7 +39,8 @@ export const Navbar = () => {
         const observerCallback = (entries: IntersectionObserverEntry[]) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    setActiveSection(entry.target.id);
+                    const id = (entry.target.id === "projects" || entry.target.id === "projects-highlight") ? "projects-highlight" : entry.target.id;
+                    setActiveSection(id);
                 }
             });
         };
@@ -49,6 +50,10 @@ export const Navbar = () => {
             const el = document.getElementById(id);
             if (el) observer.observe(el);
         });
+
+        // Add "projects" ID explicitly to be observed since it's not in navLinks.href anymore
+        const projectsEl = document.getElementById("projects");
+        if (projectsEl) observer.observe(projectsEl);
 
         window.addEventListener("scroll", handleScroll);
         return () => {

@@ -9,7 +9,7 @@ import { Project } from "@/domain/entities";
 
 export const ProjectCard = ({ title, description, image, link, github, tags }: Project) => {
     return (
-        <div className="group bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 flex flex-col h-[480px] md:h-[560px] shadow-lg shadow-slate-200/40">
+        <div className="group bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-2xl hover:shadow-emerald-500/10 transition-[box-shadow,border-color,background-color] duration-500 flex flex-col h-[480px] md:h-[560px] shadow-lg shadow-slate-200/40">
             {/* Terminal Top Bar */}
             <div className="bg-slate-50/80 border-b border-slate-100 px-6 py-4 flex items-center justify-between">
                 <div className="flex gap-2">
