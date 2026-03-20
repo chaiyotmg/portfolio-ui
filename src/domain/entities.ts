@@ -7,11 +7,9 @@ export interface Profile {
   bio: string;
   avatar: string;
   contact: {
-    phone: string;
     email: string;
     linkedin: string;
     github: string;
-    whatsapp?: string;
     resume?: string;
     location?: string;
   };
@@ -42,13 +40,18 @@ export interface Project {
   title: string;
   description: string;
   image: string;
+  svg?: string;
   link: string;
   github?: string;
   fullDescription?: string;
   caseStudy?: {
-    problem: string;
-    solution: string;
-    techStackExplanation: string;
+    architecture?: string;
+    techStack: {
+      name: string;
+      icon?: string | React.ReactNode;
+      iconWidth?: number;
+      iconHeight?: number;
+    }[];
     features: string[];
   };
   tags?: {

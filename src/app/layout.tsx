@@ -9,7 +9,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_WEB_URL || "https://chaiyot.dev"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_WEB_URL || "https://portfolio.chaiyot.dev"),
   title: "Chaiyot Mali-ngam - Back-end Developer & DevOps Engineer",
   description: "Portfolio of Chaiyot Mali-ngam, a Back-end Developer and DevOps Engineer.",
   keywords: ["Back-end Developer", "DevOps Engineer", "Spring Boot", "Kubernetes", "Docker", "Chaiyot Mali-ngam", "Portfolio"],
@@ -59,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body
         className={`${jetBrainsMono.variable} font-mono antialiased`}
       >

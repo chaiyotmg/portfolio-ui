@@ -1,6 +1,6 @@
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { Image } from "@/components/atoms/Image";
+import { Link } from "@/components/atoms/Link";
 import { motion } from "framer-motion";
 import { Typography } from "@/components/atoms/Typography";
 import { Chip } from "@/components/atoms/Chip";
@@ -23,18 +23,15 @@ export const ProjectCard = ({ title, description, image, link, github, tags }: P
                 </div>
             </div>
 
-            {/* Image Section */}
-            <div className="relative h-[160px] md:h-[200px] min-h-[160px] max-h-[160px] overflow-hidden">
-                <Image
-                    src={image}
-                    alt={title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    loading="lazy"
-                />
-                <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors duration-500" />
-            </div>
+            <Image
+                src={image}
+                alt={title}
+                fill
+                hoverScale
+                className="w-full h-[160px] md:h-[200px] transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                loading="lazy"
+            />
 
             {/* Content Section */}
             <div className="p-6 md:p-8 flex flex-col flex-grow">

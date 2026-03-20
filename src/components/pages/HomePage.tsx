@@ -8,6 +8,7 @@ import { Skills } from "@/components/organisms/Skills";
 import { Experience } from "@/components/organisms/Experience";
 import { Education } from "@/components/organisms/Education";
 import { Projects } from "@/components/organisms/Projects";
+import { ProjectHighlight } from "@/components/organisms/ProjectHighlight";
 import { Contact } from "@/components/organisms/Contact";
 import { profile, skills, experiences, projects, educations } from "@/data/portfolioData";
 
@@ -48,6 +49,7 @@ export const HomePage = () => {
             <Skills skills={skills} />
             <Experience experiences={experiences} />
             <Education educations={educations} />
+            {projects[1] && <ProjectHighlight project={projects[1]} />}
             <Projects projects={projects} />
             <Contact contact={profile.contact} />
         </PortfolioTemplate>

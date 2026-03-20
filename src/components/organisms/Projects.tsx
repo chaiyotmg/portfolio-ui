@@ -13,7 +13,7 @@ interface ProjectsProps {
 }
 
 export const Projects = ({ projects }: ProjectsProps) => {
-    const [currentIndex, setCurrentIndex] = useState(Math.floor(projects.length / 2));
+    const [currentIndex, setCurrentIndex] = useState(Math.floor(projects.length % 2));
     const [cardWidth, setCardWidth] = useState(400);
     const [gap, setGap] = useState(32);
 
