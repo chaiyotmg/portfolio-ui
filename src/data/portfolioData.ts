@@ -112,6 +112,36 @@ export const projects: Project[] = [
         },
         imageOrientation: "vertical",
         imageObjectFit: "contain",
+    },
+    {
+        title: "Decrypt PGP files on AWS Lambda",
+        description: "A Node.js AWS Lambda function for decrypting PGP encrypted files retrieved from an AWS S3 bucket.",
+        fullDescription: "A serverless solution designed to automate the process of decrypting PGP encrypted files. Built on AWS Lambda using Node.js, it integrates with S3 for file processing and storage, utilizes custom Lambda Layers for dependency management (OpenPGP, Dotenv).",
+        image: "https://objectstorage.ap-singapore-1.oraclecloud.com/n/axkttai9whfx/b/bucket-portfolio-ui/o/projects%2Fopenpgpjs.png",
+        link: "/projects/decrypt-pgp-nodejs",
+        github: "https://github.com/chaiyotmg/decrypt-pgp-nodejs",
+        tags: [
+            { name: "AWS Lambda", icon: "/icons/aws-lambda.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "Node.js", icon: "/icons/javascript.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "AWS S3", icon: "/icons/amazon-s3.svg", iconWidth: 14, iconHeight: 14 },
+            { name: "OpenPGP", icon: "Lock", iconWidth: 14, iconHeight: 14  },
+        ],
+        caseStudy: {
+            architecture: "Serverless architecture using AWS Lambda (Node.js 18.x) and S3 bucket integration. Dependencies are managed via custom Lambda Layers (openpgp-layer, dotenv-layer).",
+            techStack: [
+                { name: "AWS Lambda", icon: "/icons/aws-lambda.svg" },
+                { name: "AWS S3", icon: "/icons/amazon-s3.svg" },
+                { name: "Node.js", icon: "/icons/javascript.svg" },
+                { name: "OpenPGP", icon: "Lock" },
+            ],
+            features: [
+                "Automated PGP Decryption",
+                "AWS S3 Lifecycle Integration",
+                "Custom Lambda Layers Support (Node.js 18.x)",
+            ],
+        },
+        imageOrientation: "horizontal",
+        imageObjectFit: "contain",
     }
 ];
 
