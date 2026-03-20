@@ -3,7 +3,7 @@ import { Typography } from "@/components/atoms/Typography";
 import { Chip } from "@/components/atoms/Chip";
 import { Icon } from "@/components/atoms/Icon";
 import * as Icons from "lucide-react";
-import Image from "next/image";
+import { Image } from "@/components/atoms/Image";
 
 interface SkillCardProps {
     category: string;

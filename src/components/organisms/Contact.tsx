@@ -54,7 +54,7 @@ export const Contact = ({ contact }: ContactProps) => {
                                 </h2>
                             </div>
                             <p className="text-slate-500 text-sm md:text-base font-mono leading-relaxed max-w-2xl border-l-2 border-emerald-500/20 pl-4 py-1">
-                                I&apos;m always open to new connections and meaningful conversations. Whether you have a project in mind or just want to chat, feel free to reach out.
+                                I am always open to establishing new connections. If you are interested in hiring me, please feel free to download my resume and contact me.
                             </p>
                         </motion.div>
 
@@ -89,20 +89,6 @@ export const Contact = ({ contact }: ContactProps) => {
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.4 }}
-                                viewport={{ once: true }}
-                            >
-                                <ContactCard
-                                    icon="MapPin"
-                                    label="Location"
-                                    value={contact.location || "Bangkok, Thailand"}
-                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.location || "Bangkok, Thailand")}`}
-                                />
-                            </motion.div>
-
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: 0.5 }}
                                 viewport={{ once: true }}
                             >
@@ -127,22 +113,41 @@ export const Contact = ({ contact }: ContactProps) => {
                                     href={contact.github}
                                 />
                             </motion.div>
+
+                            
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.4 }}
+                                viewport={{ once: true }}
+                            >
+                                <ContactCard
+                                    icon="MapPin"
+                                    label="Location"
+                                    value={contact.location || "Bangkok, Thailand"}
+                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.location || "Bangkok, Thailand")}`}
+                                />
+                            </motion.div>
                         </div>
                     </div>
 
                     {/* Terminal Footer */}
                     <div className="bg-white/80 border-t border-slate-200/60 px-8 py-5 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                            <div className="flex items-center gap-2 text-slate-400 font-mono text-xs">
-                                <span className="text-emerald-500 font-bold">$</span>
-                                <span className="bg-slate-100 px-2 py-0.5 rounded text-[10px] font-bold text-slate-500 uppercase tracking-widest">Connect</span>
-                                <span className="text-slate-600">ssh mail@chaiyot.mg@gmail.com</span>
+                        <div className="flex items-start md:items-center gap-3">
+                            <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-slate-400 font-mono text-[10px] sm:text-xs">
+                                <div className="flex items-center gap-1.5">
+                                    <span className="text-emerald-500 font-bold">chaiyot@linux</span>
+                                    <span className="text-slate-400">:</span>
+                                    <span className="text-emerald-400">~/contact</span>
+                                    <span className="text-slate-400">$</span>
+                                </div>
+                                <span className="text-slate-600 break-all">ssh chaiyot.mg@gmail.com</span>
+                                <motion.div
+                                    animate={{ opacity: [1, 0] }}
+                                    transition={{ duration: 0.8, repeat: Infinity }}
+                                    className="w-1.5 h-3.5 sm:h-4 bg-emerald-500 rounded-full"
+                                />
                             </div>
-                            <motion.div
-                                animate={{ opacity: [1, 0] }}
-                                transition={{ duration: 0.8, repeat: Infinity }}
-                                className="w-1.5 h-4 bg-emerald-500 rounded-full"
-                            />
                         </div>
                         <div className="hidden md:flex items-center gap-4 text-slate-300 font-mono text-[10px]">
                             <span>STATUS: LIVE</span>

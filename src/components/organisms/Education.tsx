@@ -21,8 +21,8 @@ export const Education = ({ educations }: EducationProps) => {
                     viewport={{ once: true }}
                     className="text-center mb-12"
                 >
-                    <Typography variant="h3" className="text-xl sm:text-2xl font-bold mb-4 text-slate-800">
-                        <span className="bg-black bg-clip-text text-transparent uppercase tracking-widest text-lg">Education</span>
+                    <Typography variant="h2" className="text-2xl sm:text-2xl font-bold mb-4 text-slate-800">
+                        <span className="bg-black bg-clip-text text-transparent tracking-widest">Education</span>
                     </Typography>
                 </motion.div>
 

@@ -1,4 +1,4 @@
-# Portfolio UI (Terminal Aesthetic)
+# Portfolio UI
 
 ## 🛠️ Tech Stack
 
@@ -31,21 +31,5 @@ bun run dev
 ```bash
 # Create a production build
 bun run build
-
-# Start the production server
-bun run start
 ```
-
-## 📂 Project Structure
-
-```text
-src/
-├── app/            # Next.js App Router pages
-├── components/     # Atomic Design structure (Atoms, Molecules, Organisms)
-├── data/           # Portfolio data (portfolioData.ts)
-├── domain/         # TypeScript entities and interfaces
-```
-
----
-
 Built with 💚 by [Chaiyot Mali-ngam](https://github.com/chaiyotmg)

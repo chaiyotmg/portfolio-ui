@@ -1,6 +1,6 @@
 import React from "react";
 import { Icon } from "./Icon";
-import Image from "next/image";
+import { Image } from "./Image";
 import * as Icons from "lucide-react";
 
 interface ChipProps {
@@ -44,7 +44,7 @@ export const Chip = ({
                         alt={typeof children === 'string' ? children : "icon"}
                         width={iconWidth}
                         height={iconHeight}
-                        className="object-contain"
+                        className="object-contain w-auto h-auto"
                         loading="lazy"
                     />
                 );

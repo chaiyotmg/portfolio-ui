@@ -4,10 +4,11 @@ import * as Icons from "lucide-react";
 interface IconProps {
     icon: keyof typeof Icons | React.ReactNode;
     size?: number;
+    strokeWidth?: number;
     className?: string;
 }
 
-export const Icon = ({ icon, size = 24, className = "" }: IconProps) => {
+export const Icon = ({ icon, size = 24, strokeWidth, className = "" }: IconProps) => {
     if (!icon) return null;
 
     // If it's a string, it's a Lucide icon name
@@ -17,7 +18,7 @@ export const Icon = ({ icon, size = 24, className = "" }: IconProps) => {
             console.warn(`Icon ${icon} not found in lucide-react`);
             return null;
         }
-        return <LucideIcon size={size} className={className} />;
+        return <LucideIcon size={size} strokeWidth={strokeWidth} className={className} />;
     }
 
     // If it's an object/node (SVG or other React component)

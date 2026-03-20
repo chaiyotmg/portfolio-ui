@@ -22,7 +22,7 @@ export const Skills = ({ skills }: SkillsProps) => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <Typography variant="h2" className="text-xl sm:text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+                    <Typography variant="h2" className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 text-slate-900">
                         The <span className="bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent">Tech</span> Stack
                     </Typography>
                 </motion.div>
@@ -51,7 +51,7 @@ export const Skills = ({ skills }: SkillsProps) => {
 
                     {/* Terminal Content Grid */}
                     <div className="p-8 md:p-12">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {skills.map((skillGroup, index) => (
                                 <motion.div
                                     key={skillGroup.category}
@@ -72,16 +72,23 @@ export const Skills = ({ skills }: SkillsProps) => {
                     </div>
 
                     {/* Terminal Footer / Success Message */}
-                    <div className="bg-white/80 border-t border-slate-200/60 px-8 py-5 flex items-center gap-3">
-                        <div className="text-emerald-500 font-bold">→</div>
-                        <div className="text-slate-400 font-mono text-xs md:text-sm">
-                            <span className="text-emerald-600">~</span> echo <span className="text-slate-600">&quot;Stack Initialized Successfully.&quot;</span>
+                    <div className="bg-white/80 border-t border-slate-200/60 px-8 py-5 flex items-center justify-between">
+                        <div className="flex items-start md:items-center gap-3">
+                            <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-slate-400 font-mono text-[10px] sm:text-xs">
+                                <div className="flex items-center gap-1.5">
+                                    <span className="text-emerald-500 font-bold">chaiyot@linux</span>
+                                    <span className="text-slate-400">:</span>
+                                    <span className="text-emerald-400">~/techstack</span>
+                                    <span className="text-slate-400">$</span>
+                                </div>
+                                <span className="text-slate-600 break-all">echo &quot;Stack Initialized Successfully.&quot;</span>
+                                <motion.div
+                                    animate={{ opacity: [1, 0] }}
+                                    transition={{ duration: 0.8, repeat: Infinity }}
+                                    className="w-1.5 h-3.5 sm:h-4 bg-emerald-500 rounded-full"
+                                />
+                            </div>
                         </div>
-                        <motion.div
-                            animate={{ opacity: [1, 0] }}
-                            transition={{ duration: 0.8, repeat: Infinity }}
-                            className="w-2 h-4 bg-emerald-500 rounded-sm"
-                        />
                     </div>
                 </motion.div>
             </div>

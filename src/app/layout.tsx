@@ -9,7 +9,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_WEB_URL || "https://chaiyot.dev"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_WEB_URL || "https://portfolio.chaiyot.dev"),
   title: "Chaiyot Mali-ngam - Back-end Developer & DevOps Engineer",
   description: "Portfolio of Chaiyot Mali-ngam, a Back-end Developer and DevOps Engineer.",
   keywords: ["Back-end Developer", "DevOps Engineer", "Spring Boot", "Kubernetes", "Docker", "Chaiyot Mali-ngam", "Portfolio"],
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: "Chaiyot Portfolio",
     images: [
       {
-        url: "/favicon.svg",
+        url: "/icons/favicon.svg",
         width: 800,
         height: 600,
       },
@@ -33,10 +33,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Chaiyot Mali-ngam - Back-end Developer & DevOps Engineer",
     description: "Portfolio of Chaiyot Mali-ngam, with experience in Spring Boot and DevOps.",
-    images: ["/favicon.svg"],
+    images: ["/icons/favicon.svg"],
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: "/icons/favicon.svg",
   },
 };
 
@@ -59,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body
         className={`${jetBrainsMono.variable} font-mono antialiased`}
       >

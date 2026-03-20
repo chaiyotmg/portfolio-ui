@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { PortfolioTemplate } from "@/components/templates/PortfolioTemplate";
 import { Navbar } from "@/components/organisms/Navbar";
 import { About } from "@/components/organisms/About";
@@ -7,10 +8,25 @@ import { Skills } from "@/components/organisms/Skills";
 import { Experience } from "@/components/organisms/Experience";
 import { Education } from "@/components/organisms/Education";
 import { Projects } from "@/components/organisms/Projects";
+import { ProjectHighlight } from "@/components/organisms/ProjectHighlight";
 import { Contact } from "@/components/organisms/Contact";
 import { profile, skills, experiences, projects, educations } from "@/data/portfolioData";
 
 export const HomePage = () => {
+    useEffect(() => {
+        const scrollTo = sessionStorage.getItem("scrollToSection");
+        if (scrollTo) {
+            const timer = setTimeout(() => {
+                const element = document.getElementById(scrollTo);
+                if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                }
+                sessionStorage.removeItem("scrollToSection");
+            }, 300);
+            return () => clearTimeout(timer);
+        }
+    }, []);
+
     return (
         <PortfolioTemplate
             navbar={<Navbar />}
@@ -33,6 +49,7 @@ export const HomePage = () => {
             <Skills skills={skills} />
             <Experience experiences={experiences} />
             <Education educations={educations} />
+            {projects[1] && <ProjectHighlight project={projects[1]} />}
             <Projects projects={projects} />
             <Contact contact={profile.contact} />
         </PortfolioTemplate>

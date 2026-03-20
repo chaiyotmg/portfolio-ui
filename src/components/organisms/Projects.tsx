@@ -13,7 +13,7 @@ interface ProjectsProps {
 }
 
 export const Projects = ({ projects }: ProjectsProps) => {
-    const [currentIndex, setCurrentIndex] = useState(Math.floor(projects.length / 2));
+    const [currentIndex, setCurrentIndex] = useState(Math.floor((projects.length - 1) / 2));
     const [cardWidth, setCardWidth] = useState(400);
     const [gap, setGap] = useState(32);
 
@@ -54,7 +54,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <Typography variant="h2" className="sm:text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+                    <Typography variant="h2" className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 text-slate-900">
                         The <span className="bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent">Project</span>
                     </Typography>
                     <div className="flex justify-center mb-4">
@@ -65,27 +65,15 @@ export const Projects = ({ projects }: ProjectsProps) => {
                     </div>
                 </motion.div>
 
-                <div className="relative mt-16 px-4 touch-none">
+                <div className="relative mt-16 px-4">
                     <div className="relative overflow-visible">
                         <motion.div
-                            className="flex gap-6 md:gap-8 cursor-grab active:cursor-grabbing"
+                            className="flex gap-6 md:gap-8 cursor-default select-none relative"
+                            style={{ left: "50%" }}
                             animate={{
-                                x: `calc(50% - ${cardWidth / 2}px - (${currentIndex} * (${cardWidth}px + ${gap}px)))`
+                                x: -(cardWidth / 2) - (currentIndex * (cardWidth + gap))
                             }}
-                            transition={{ type: "spring", stiffness: 200, damping: 25 }}
-                            drag="x"
-                            dragConstraints={{ left: -2000, right: 2000 }}
-                            dragElastic={0.05}
-                            dragMomentum={false}
-                            whileDrag={{ scale: 0.98 }}
-                            onDragEnd={(e, { offset }) => {
-                                const swipeThreshold = 50;
-                                if (offset.x < -swipeThreshold && currentIndex < projects.length - 1) {
-                                    paginate(1);
-                                } else if (offset.x > swipeThreshold && currentIndex > 0) {
-                                    paginate(-1);
-                                }
-                            }}
+                            transition={{ type: "spring", stiffness: 150, damping: 20 }}
                         >
                             {projects.map((project, index) => {
                                 const isActive = index === currentIndex;
@@ -93,11 +81,6 @@ export const Projects = ({ projects }: ProjectsProps) => {
                                     <motion.div
                                         key={project.title}
                                         className="shrink-0 w-[280px] sm:w-[350px] md:w-[400px] select-none"
-                                        animate={{
-                                            scale: isActive ? 1 : 0.9,
-                                            opacity: isActive ? 1 : 0.6,
-                                        }}
-                                        transition={{ duration: 0.4 }}
                                     >
                                         <ProjectCard {...project} />
                                     </motion.div>

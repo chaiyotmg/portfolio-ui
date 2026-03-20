@@ -27,6 +27,7 @@ build-app:
   stage: build
   variables:
     DOCKER_IMAGE: $GITLAB_REGISTRY/portfolio-ui
+    GIT_STRATEGY: clone
   before_script:
     - |
       echo "Checking CI variables..."
@@ -35,6 +36,7 @@ build-app:
       if [ -z "$GITLAB_REGISTRY" ]; then echo "❌ Error: GITLAB_REGISTRY is not set"; exit 1; fi
     - echo "$GITLAB_TOKEN" | docker login $GITLAB_REGISTRY -u $GITLAB_USERNAME --password-stdin
   script:
+
     - |
       if [ -n "$CI_COMMIT_TAG" ]; then
         echo "Building from tag: $CI_COMMIT_TAG"
@@ -43,22 +45,30 @@ build-app:
         echo "Building from manual trigger: Branch=$BRANCH, Tag=$TAG"
         git fetch origin $BRANCH
         git checkout $BRANCH
+        git reset --hard origin/$BRANCH
         BUILD_TAG=$TAG
       else
         echo "❌ Error: This pipeline only supports Tags or Manual triggers."
         exit 1
       fi
+
     - |
       echo "Build app to docker image"
-      docker build --no-cache --platform linux/arm64 \
+      docker build --platform linux/arm64 \
         --build-arg NEXT_PUBLIC_WEB_URL=$NEXT_PUBLIC_WEB_URL \
         --build-arg NEXT_PUBLIC_RESUME_URL=$NEXT_PUBLIC_RESUME_URL \
         -t $DOCKER_IMAGE:$BUILD_TAG .
       docker image ls
+
     - |
       echo "Push docker image to GitLab registry"
       docker push $DOCKER_IMAGE:$BUILD_TAG
+
     - |
       echo "Clean docker images"
       docker rmi $DOCKER_IMAGE:$BUILD_TAG
       docker image prune -f
+
+    - |
+      echo "Cleaning up temporary files..."
+      rm -rf $(pwd)/*

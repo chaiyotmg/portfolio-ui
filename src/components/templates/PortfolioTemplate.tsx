@@ -27,10 +27,8 @@ export const PortfolioTemplate = ({
             {/* Subtle Background Glow (Global) */}
             <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[120px] z-0 pointer-events-none" />
 
-            {/* Navbar - Kept higher z-index if needed in its own component, or it will naturally stack */}
-            <div className="relative z-50">
-                {navbar}
-            </div>
+            {/* Navbar */}
+            {navbar}
 
             <main className="relative z-10 pt-20">
                 {children}
