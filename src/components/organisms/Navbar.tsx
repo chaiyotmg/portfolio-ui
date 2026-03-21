@@ -80,10 +80,11 @@ export const Navbar = () => {
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${mobileOpen
-                ? "bg-white py-3 shadow-md border-b border-slate-200"
-                : "bg-transparent py-5 border-b border-transparent"
-                }`}
+            className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 bg-white/80 backdrop-blur-md ${
+                scrolled || mobileOpen
+                    ? "py-3 shadow-md border-b border-slate-200/60"
+                    : "py-5 border-b border-transparent"
+            }`}
         >
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <div className="flex items-center justify-between">
