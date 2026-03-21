@@ -59,14 +59,16 @@ export const ExperienceItem = ({
                     </div>
                 </div>
 
-                <ul className="space-y-3">
-                    {description.map((item, index) => (
-                        <li key={index} className="flex gap-3 text-slate-500 text-sm md:text-[15px] leading-relaxed">
-                            <span className="mt-2 w-1.5 h-1.5 bg-slate-200 rounded-sm shrink-0 group-hover/exp:bg-emerald-400 group-hover/exp:rotate-45 transition-all duration-300" />
-                            {item}
-                        </li>
-                    ))}
-                </ul>
+                <div className="bg-white rounded-2xl p-4 md:p-6 border border-slate-100 group-hover/exp:bg-white group-hover/exp:border-emerald-100 group-hover/exp:shadow-xl group-hover/exp:shadow-emerald-500/5 transition-all duration-300">
+                    <ul className="space-y-4">
+                        {description.map((item, index) => (
+                            <li key={index} className="flex gap-4 text-slate-600 text-sm md:text-[15px] leading-relaxed">
+                                <span className="mt-2 w-1.5 h-1.5 bg-slate-200 rounded-full shrink-0 group-hover/exp:bg-emerald-500 transition-all duration-300" />
+                                <span>{item}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </motion.div>
         </div>
     );
