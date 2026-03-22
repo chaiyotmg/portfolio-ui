@@ -31,7 +31,7 @@ export const HomePage = () => {
         <PortfolioTemplate
             navbar={<Navbar />}
             footer={
-                <footer className="py-12 text-center text-slate-400 text-sm border-t border-slate-100 bg-transparent">
+                <footer className="py-12 text-center text-slate-400 text-xs border-t border-slate-100 bg-transparent">
                     <p>Copyright © {new Date().getFullYear()}. Designed and Developed by {profile.name}.</p>
                 </footer>
             }

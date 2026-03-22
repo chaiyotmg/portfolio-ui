@@ -47,7 +47,7 @@ export const ExperienceItem = ({
                         <Typography variant="h4" className="text-slate-900 font-bold group-hover/exp:text-emerald-600 transition-colors tracking-tight">
                             {position}
                         </Typography>
-                        <Typography variant="span" className="text-sm font-mono text-slate-500 mt-0.5">
+                        <Typography variant="span" className="text-sm font-mono text-slate-900 mt-0.5">
                             {company}
                         </Typography>
                     </div>
