@@ -67,30 +67,63 @@ export const Projects = ({ projects }: ProjectsProps) => {
 
                 <div className="relative mt-16 px-4">
                     <div className="relative overflow-visible">
-                        <motion.div
-                            className="flex gap-6 md:gap-8 cursor-default select-none relative"
-                            style={{ left: "50%" }}
-                            animate={{
-                                x: -(cardWidth / 2) - (currentIndex * (cardWidth + gap))
-                            }}
-                            transition={{ type: "spring", stiffness: 150, damping: 20 }}
-                        >
-                            {projects.map((project, index) => {
-                                const isActive = index === currentIndex;
-                                return (
-                                    <motion.div
-                                        key={project.title}
-                                        className="shrink-0 w-[280px] sm:w-[350px] md:w-[400px] select-none"
-                                    >
-                                        <ProjectCard {...project} />
-                                    </motion.div>
-                                );
-                            })}
-                        </motion.div>
+                        {(() => {
+                            const step = cardWidth + gap;
+                            const targetX = -(cardWidth / 2) - (currentIndex * step);
+                            return (
+                                <motion.div
+                                    drag="x"
+                                    dragConstraints={{
+                                        left: currentIndex === projects.length - 1 ? targetX : targetX - step,
+                                        right: currentIndex === 0 ? targetX : targetX + step,
+                                    }}
+                                    dragMomentum={false}
+                                    dragElastic={0.2}
+                                    onDragEnd={(_, info) => {
+                                        const threshold = 50;
+                                        const velocityThreshold = 500;
+
+                                        if (info.offset.x < -threshold || info.velocity.x < -velocityThreshold) {
+                                            if (currentIndex < projects.length - 1) {
+                                                setCurrentIndex(prev => prev + 1);
+                                            }
+                                        } else if (info.offset.x > threshold || info.velocity.x > velocityThreshold) {
+                                            if (currentIndex > 0) {
+                                                setCurrentIndex(prev => prev - 1);
+                                            }
+                                        }
+                                    }}
+                                    className="flex gap-6 md:gap-8 cursor-grab active:cursor-grabbing select-none relative"
+                                    style={{
+                                        left: "50%",
+                                        touchAction: "pan-y",
+                                    }}
+                                    animate={{
+                                        x: targetX,
+                                    }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 150,
+                                        damping: 25,
+                                        mass: 1,
+                                    }}
+                                >
+                                    {projects.map((project, index) => {
+                                        return (
+                                            <motion.div
+                                                key={project.title}
+                                                className="shrink-0 w-[280px] sm:w-[350px] md:w-[400px] select-none"
+                                            >
+                                                <ProjectCard {...project} />
+                                            </motion.div>
+                                        );
+                                    })}
+                                </motion.div>
+                            );
+                        })()}
                     </div>
 
                     {/* Terminal Status Bar Navigation */}
-                    {/* Terminal Status Bar Navigation (Light Theme) */}
                     <div className="mt-16 flex justify-center">
                         <div className="flex items-center bg-white/90 backdrop-blur-md rounded-lg px-2 py-1.5 border border-slate-200 shadow-xl shadow-emerald-500/5 gap-1 font-mono text-xs">
                             {/* Prev Button */}

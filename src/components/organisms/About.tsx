@@ -71,7 +71,7 @@ export const About = ({ name, bio, github, linkedin, resume }: AboutProps) => {
                         {name}
                     </Typography>
 
-                    <Typography variant="p" className="max-w-2xl mx-auto mb-8 text-slate-500 text-sm md:text-base leading-relaxed">
+                    <Typography variant="p" className="max-w-2xl mx-auto mb-8 text-slate-900 text-sm md:text-base leading-relaxed">
                         {bio}
                     </Typography>
 
