@@ -23,8 +23,19 @@ export const ZoomableImage = ({ image, svg, alt, imageOrientation = "horizontal"
     const constraintsRef = useRef<HTMLDivElement>(null);
     const svgContainerRef = useRef<HTMLDivElement>(null);
     const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
+    const [touchDistance, setTouchDistance] = useState<number | null>(null);
+    const [viewport, setViewport] = useState({ w: 1000, h: 1000 });
 
     const isSvg = !!svg;
+
+    // Monitor viewport size
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        const updateSize = () => setViewport({ w: window.innerWidth, h: window.innerHeight });
+        updateSize();
+        window.addEventListener("resize", updateSize);
+        return () => window.removeEventListener("resize", updateSize);
+    }, []);
 
     useEffect(() => {
         setMounted(true);
@@ -39,6 +50,32 @@ export const ZoomableImage = ({ image, svg, alt, imageOrientation = "horizontal"
                 .then(text => {
                     setSvgContent(text);
                     setIsSvgLoading(false);
+                    
+                    // Try to parse dimensions from SVG text
+                    try {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(text, "image/svg+xml");
+                        const svgElement = doc.querySelector('svg');
+                        if (svgElement) {
+                            // First priority: viewBox
+                            const viewBox = svgElement.getAttribute('viewBox');
+                            if (viewBox) {
+                                const parts = viewBox.split(/[\s,]+/).map(Number).filter(n => !isNaN(n));
+                                if (parts.length >= 4) {
+                                    setImageSize({ width: Math.abs(parts[2]), height: Math.abs(parts[3]) });
+                                }
+                            } else {
+                                // Second priority: width/height attributes
+                                const w = parseFloat(svgElement.getAttribute('width') || "0");
+                                const h = parseFloat(svgElement.getAttribute('height') || "0");
+                                if (w > 0 && h > 0) {
+                                    setImageSize({ width: w, height: h });
+                                }
+                            }
+                        }
+                    } catch (e) {
+                        console.error("Error parsing SVG for size:", e);
+                    }
                 })
                 .catch(err => {
                     console.error("Failed to load SVG:", err);
@@ -51,12 +88,43 @@ export const ZoomableImage = ({ image, svg, alt, imageOrientation = "horizontal"
     const handleWheel = (e: React.WheelEvent) => {
         if (!isIdOpen) return;
         const delta = e.deltaY;
-        const zoomStep = 0.1 * scale; // Exponential zoom for better feel
+        const zoomStep = 0.1 * scale;
         if (delta < 0) {
-            setScale(prev => Math.min(prev + zoomStep, 2));
+            setScale(prev => Math.min(prev + zoomStep, 5));
         } else {
-            setScale(prev => Math.max(prev - zoomStep, 0.5));
+            setScale(prev => Math.max(prev - zoomStep, 0.4));
         }
+    };
+
+    // Handle touch pinch to zoom
+    const handleTouchStart = (e: React.TouchEvent) => {
+        if (e.touches.length === 2) {
+            const dist = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            setTouchDistance(dist);
+        }
+    };
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        if (e.touches.length === 2 && touchDistance !== null) {
+            const dist = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            
+            const delta = dist - touchDistance;
+            if (Math.abs(delta) > 5) {
+                const zoomFactor = delta > 0 ? 1.05 : 0.95;
+                setScale(prev => Math.min(Math.max(prev * zoomFactor, 0.4), 5));
+                setTouchDistance(dist);
+            }
+        }
+    };
+
+    const handleTouchEnd = () => {
+        setTouchDistance(null);
     };
 
     // Body scroll locking
@@ -69,14 +137,36 @@ export const ZoomableImage = ({ image, svg, alt, imageOrientation = "horizontal"
         return () => { document.body.style.overflow = 'unset'; };
     }, [isIdOpen]);
 
-    const handleZoomIn = () => setScale(prev => Math.min(prev + 0.1, 2));
-    const handleZoomOut = () => setScale(prev => Math.max(prev - 0.1, 0.5));
+    const handleZoomIn = () => setScale(prev => Math.min(prev + 0.2, 5));
+    const handleZoomOut = () => setScale(prev => Math.max(prev - 0.2, 0.4));
     const handleReset = () => setScale(0.5);
 
     const closeModal = () => {
         setIsIdOpen(false);
         setScale(0.5);
     };
+
+    // Calculate effective content dimensions after object-contain scaling
+    let initW = viewport.w;
+    let initH = viewport.h;
+
+    if (imageSize.width > 0 && imageSize.height > 0) {
+        const imageRatio = imageSize.width / imageSize.height;
+        const viewportRatio = viewport.w / viewport.h;
+
+        if (imageRatio > viewportRatio) {
+            // Wide image: occupies full Width, height is scaled down
+            initW = viewport.w;
+            initH = viewport.w / imageRatio;
+        } else {
+            // Tall image: occupies full Height, width is scaled down
+            initH = viewport.h;
+            initW = viewport.h * imageRatio;
+        }
+    }
+
+    const constraintX = Math.max(0, (initW * scale - viewport.w) / 2);
+    const constraintY = Math.max(0, (initH * scale - viewport.h) / 2);
 
     return (
         <div className="relative mb-12">
@@ -130,6 +220,9 @@ export const ZoomableImage = ({ image, svg, alt, imageOrientation = "horizontal"
                             {/* Interactive Area */}
                             <div
                                 ref={constraintsRef}
+                                onTouchStart={handleTouchStart}
+                                onTouchMove={handleTouchMove}
+                                onTouchEnd={handleTouchEnd}
                                 className="w-full h-full flex items-center justify-center relative overflow-hidden cursor-move"
                             >
                                 <motion.div
@@ -137,34 +230,31 @@ export const ZoomableImage = ({ image, svg, alt, imageOrientation = "horizontal"
                                     style={{ scale }}
                                     drag
                                     dragConstraints={{
-                                        left: -Math.max(0, ((imageSize.width > 0 ? Math.min(window.innerWidth, imageSize.width * (window.innerHeight / imageSize.height)) : (typeof window !== 'undefined' ? window.innerWidth : 1000)) * scale) / 2),
-                                        right: Math.max(0, ((imageSize.width > 0 ? Math.min(window.innerWidth, imageSize.width * (window.innerHeight / imageSize.height)) : (typeof window !== 'undefined' ? window.innerWidth : 1000)) * scale) / 2),
-                                        top: -Math.max(0, ((imageSize.height > 0 ? Math.min(window.innerHeight, imageSize.height * (window.innerWidth / imageSize.width)) : (typeof window !== 'undefined' ? window.innerHeight : 1000)) * scale) / 2),
-                                        bottom: Math.max(0, ((imageSize.height > 0 ? Math.min(window.innerHeight, imageSize.height * (window.innerWidth / imageSize.width)) : (typeof window !== 'undefined' ? window.innerHeight : 1000)) * scale) / 2),
+                                        left: -constraintX,
+                                        right: constraintX,
+                                        top: -constraintY,
+                                        bottom: constraintY,
                                     }}
-                                    dragElastic={0}
+                                    dragElastic={0.2}
                                     dragMomentum={false}
-                                    onLoad={() => {
-                                        // This handles the motion.div size if needed
-                                    }}
                                 >
-                                    {isSvg ? (
-                                        isSvgLoading ? (
-                                            <div className="w-[80vw] h-[60vh] bg-slate-100/10 animate-pulse rounded-xl flex items-center justify-center">
-                                                <div className="flex flex-col items-center gap-4">
-                                                    <div className="w-12 h-12 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin" />
-                                                    <span className="text-slate-400 font-mono text-xs animate-pulse">LOADING ARCHITECTURE ...</span>
+                                    <div className="relative w-screen h-screen bg-transparent flex items-center justify-center">
+                                        {isSvg ? (
+                                            isSvgLoading ? (
+                                                <div className="w-[80vw] h-[60vh] bg-slate-100/10 animate-pulse rounded-xl flex items-center justify-center">
+                                                    <div className="flex flex-col items-center gap-4">
+                                                        <div className="w-12 h-12 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin" />
+                                                        <span className="text-slate-400 font-mono text-xs animate-pulse">LOADING ARCHITECTURE ...</span>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            ) : (
+                                                <div
+                                                    ref={svgContainerRef}
+                                                    className="w-full h-full flex items-center justify-center [&_svg]:w-full [&_svg]:h-full [&_svg]:block [&_svg]:max-w-full [&_svg]:max-h-full"
+                                                    dangerouslySetInnerHTML={{ __html: svgContent || "" }}
+                                                />
+                                            )
                                         ) : (
-                                            <div
-                                                ref={svgContainerRef}
-                                                className="w-full h-full flex items-center justify-center"
-                                                dangerouslySetInnerHTML={{ __html: svgContent || "" }}
-                                            />
-                                        )
-                                    ) : (
-                                        <div className="relative w-screen h-screen bg-transparent flex items-center justify-center">
                                             <Image
                                                 src={image}
                                                 alt={alt}
@@ -182,8 +272,8 @@ export const ZoomableImage = ({ image, svg, alt, imageOrientation = "horizontal"
                                                 } as React.CSSProperties}
                                                 sizes="100vw"
                                             />
-                                        </div>
-                                    )}
+                                        )}
+                                    </div>
                                 </motion.div>
                             </div>
 
@@ -193,7 +283,7 @@ export const ZoomableImage = ({ image, svg, alt, imageOrientation = "horizontal"
                                     <button
                                         onClick={handleZoomOut}
                                         className="p-3 hover:bg-slate-100 rounded-2xl transition-colors text-slate-800 disabled:opacity-30"
-                                        disabled={scale <= 0.5}
+                                        disabled={scale <= 0.4}
                                         title="Zoom Out"
                                     >
                                         <Icon icon="Minus" size={20} />
@@ -208,7 +298,7 @@ export const ZoomableImage = ({ image, svg, alt, imageOrientation = "horizontal"
                                     <button
                                         onClick={handleZoomIn}
                                         className="p-3 hover:bg-slate-100 rounded-2xl transition-colors text-slate-800 disabled:opacity-30"
-                                        disabled={scale >= 2}
+                                        disabled={scale >= 5}
                                         title="Zoom In"
                                     >
                                         <Icon icon="Plus" size={20} />
@@ -224,7 +314,7 @@ export const ZoomableImage = ({ image, svg, alt, imageOrientation = "horizontal"
                                     <div className="w-1 h-1 rounded-full bg-white/20" />
                                     <div className="flex items-center gap-2">
                                         <Icon icon="Mouse" size={10} className="text-emerald-400" />
-                                        Scroll to Zoom
+                                        Scroll / Pinch to Zoom
                                     </div>
                                 </div>
                             </div>
