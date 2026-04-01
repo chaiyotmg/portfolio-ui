@@ -178,12 +178,11 @@ export const skills: Skill[] = [
         bgIcon: "Monitor",
         items: [
             { name: "React.js", icon: "/icons/react.svg", iconWidth: 16, iconHeight: 16 },
-            { name: "React Native", icon: "/icons/react.svg", iconWidth: 16, iconHeight: 16 },
             { name: "Vue.js", icon: "/icons/vuejs.svg", iconWidth: 16, iconHeight: 16 },
             { name: "TailwindCSS", icon: "/icons/tailwindcss.svg", iconWidth: 16, iconHeight: 16 },
             { name: "SCSS", icon: "/icons/scss.svg", iconWidth: 16, iconHeight: 16 },
-            { name: "HTML5", icon: "/icons/html.svg", iconWidth: 16, iconHeight: 16 },
-            { name: "CSS3", icon: "/icons/css.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "HTML", icon: "/icons/html.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "CSS", icon: "/icons/css.svg", iconWidth: 16, iconHeight: 16 },
         ],
     },
     {
@@ -258,6 +257,7 @@ export const skills: Skill[] = [
             { name: "Postman", icon: "/icons/postman.svg", iconWidth: 16, iconHeight: 16 },
             { name: "Visual Studio Code", icon: "/icons/vscode.svg", iconWidth: 16, iconHeight: 16 },
             { name: "Google Antigravity", icon: "/icons/google-antigravity.svg", iconWidth: 16, iconHeight: 16 },
+            { name: "Google Gemini", icon: "/icons/gemini.svg", iconWidth: 16, iconHeight: 16 },
             { name: "IntelliJ IDEA", icon: "/icons/intellij.svg", iconWidth: 16, iconHeight: 16 },
             { name: "Docker", icon: "/icons/docker.svg", iconWidth: 16, iconHeight: 16 },
             { name: "GitHub", icon: "/icons/github.svg", iconWidth: 16, iconHeight: 16 },
